@@ -54,3 +54,35 @@ function setupArticleFiltering() {
 }
 
 setupArticleFiltering();
+
+function setupMobileNav() {
+    const toggle = document.querySelector(".nav-toggle");
+    const nav = document.getElementById("siteNav");
+    if (!toggle || !nav) return;
+
+    function isSmallScreen() {
+        return window.matchMedia("(max-width: 840px)").matches;
+    }
+
+    function closeNav() {
+        nav.classList.remove("is-open");
+        toggle.setAttribute("aria-expanded", "false");
+    }
+
+    toggle.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("is-open");
+        toggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    for (const link of nav.querySelectorAll("a")) {
+        link.addEventListener("click", () => {
+            if (isSmallScreen()) closeNav();
+        });
+    }
+
+    window.addEventListener("resize", () => {
+        if (!isSmallScreen()) closeNav();
+    });
+}
+
+setupMobileNav();
