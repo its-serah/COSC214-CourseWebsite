@@ -7,22 +7,38 @@
     <meta name="description" content="An interactive COFCS214 companion site by Sarah Rashidi with lecture slides, compiler-based exercises, and tailored study roadmaps." />
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="icon" href="images/stem-games.jpg">
+    <link rel="icon" href="images/course-icon.svg">
 </head>
-<body>
+<body data-theme="dark">
     <a class="skip-link" href="#home">Skip directly to the main course content.</a>
-    <header class="header">
-        <div class="container">
+    <header class="header" id="top">
+        <div class="container header__inner">
             <a class="logo" href="#home">
-                <span class="logo-text">This is the COFCS214 learning companion.</span>
+                <img src="images/course-icon.svg" alt="COFCS214 icon" class="logo-icon">
+                <div class="logo-copy">
+                    <span class="logo-eyebrow">COFCS214</span>
+                    <span class="logo-title">Learning Companion</span>
+                </div>
             </a>
-            <button class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Open the navigation menu.</button>
-            <nav class="nav" id="siteNav">
-                <a href="#home">Return to the course overview.</a>
-                <a href="#chapters">Review the chapter library.</a>
-                <a href="#roadmap">Explore the tailored roadmap.</a>
-                <a href="#problems">Practice with LeetCode-style challenges.</a>
+
+            <nav class="navbar" id="siteNav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a class="nav-link" href="#home">Overview</a></li>
+                    <li><a class="nav-link" href="#chapters">Chapters</a></li>
+                    <li><a class="nav-link" href="#exercises">Exercises</a></li>
+                    <li><a class="nav-link" href="#roadmap">Roadmap</a></li>
+                    <li><a class="nav-link" href="#problems">Problems</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
             </nav>
+
+            <div class="header-controls">
+                <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle>
+                    <span class="theme-toggle__icon" aria-hidden="true"></span>
+                    <span data-theme-toggle-text>Switch to light mode</span>
+                </button>
+                <button class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+            </div>
         </div>
     </header>
 
@@ -100,7 +116,7 @@
         </section>
 
         <!-- Interactive Support Section -->
-        <section id="practice" class="section">
+        <section id="exercises" class="section">
             <div class="container">
                 <h2>The interactive compiler area keeps experimentation stress-free.</h2>
                 <p class="section-intro">The embedded C++ compiler mirrors the tools demonstrated in class, providing consistent formatting, inline error explanations, and the ability to rewind each run so that you can focus on understanding rather than setup.</p>
@@ -137,6 +153,15 @@
                         <p>Each challenge references the built-in compiler so you can test your approach instantly before reviewing Sarah Rashidi’s fully documented solution.</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <h2>Direct course communication stays open.</h2>
+                <p class="section-intro">For individualized guidance, clarification on assignments, or to share feedback about this platform, email Sarah Rashidi at <a href="mailto:serah.elrashidi@gmail.com">serah.elrashidi@gmail.com</a> and describe exactly which chapter, exercise, or roadmap step you are working through.</p>
+                <p>Responses emphasize actionable study steps, so you always leave with a next action rather than general encouragement.</p>
             </div>
         </section>
     </main>
