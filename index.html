@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Young4STEM Games</title>
-    <meta name="description" content="Young4STEM Games: game recommendations that make STEM learning seriously fun." />
+    <title>COFCS214 Learning Companion</title>
+    <meta name="description" content="An interactive COFCS214 companion site by Sarah Rashidi with lecture slides, compiler-based exercises, and tailored study roadmaps." />
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="images/stem-games.jpg">
 </head>
 <body>
-    <a class="skip-link" href="#home">Skip to content</a>
+    <a class="skip-link" href="#home">Skip directly to the main course content.</a>
     <header class="header">
         <div class="container">
             <a class="logo" href="#home">
-                <img src="images/stem-games.jpg" alt="Young4STEM Games Logo" class="logo-img">
-                <span class="logo-text">Young4STEM Games</span>
+                <img src="images/stem-games.jpg" alt="Logo for the COFCS214 learning companion." class="logo-img">
+                <span class="logo-text">This is the COFCS214 learning companion.</span>
             </a>
-            <button class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+            <button class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Open the navigation menu.</button>
             <nav class="nav" id="siteNav">
-                <a href="#home">Home</a>
-                <a href="#articles">Articles</a>
-                <a href="#team">Team</a>
-                <a href="#about">About</a>
+                <a href="#home">Return to the course overview.</a>
+                <a href="#chapters">Review the chapter library.</a>
+                <a href="#roadmap">Explore the tailored roadmap.</a>
+                <a href="#problems">Practice with LeetCode-style challenges.</a>
             </nav>
         </div>
     </header>
@@ -31,215 +31,121 @@
         <!-- Hero Section -->
         <section id="home" class="hero">
             <div class="container">
-                <p class="eyebrow">Power Up Your Brain!</p>
-                <h1>Young4STEM Games</h1>
-                <p class="lead">Welcome to the ultimate playground where science meets fun! Ready to level up your brainpower? Dive into our epic collection of Game Recommendations that will challenge your logic, unlock your curiosity, and spark your inner scientist, engineer, coder, or mathematician. Whether you're building circuits, solving puzzles, or experimenting with physics, this is where learning gets seriously awesome.</p>
+                <p class="eyebrow">You are exploring COFCS214 – Introduction to Programming with C++.</p>
+                <h1>This website is part of the COFCS214 – Introduction to Programming with C++ course, built and instructed by Sarah Rashidi.</h1>
+                <p class="lead">This interactive learning website supports you during every stage of COFCS214 and keeps preparing you even after the course ends, combining guided study materials with continuously updated practice experiences.</p>
                 <div class="hero-actions">
-                    <a href="#articles" class="btn btn-primary">Browse Articles</a>
-                    <a href="#categories" class="btn btn-secondary">Browse by Category</a>
+                    <a href="#chapters" class="btn btn-primary">Review the chapter directory now.</a>
+                    <a href="#roadmap" class="btn btn-secondary">Discover how the tailored roadmap works.</a>
                 </div>
             </div>
         </section>
 
-        <!-- Articles Section -->
-        <section id="articles" class="section">
+        <!-- Chapters Section -->
+        <section id="chapters" class="section">
             <div class="container">
-                <h2>Game Recommendations</h2>
-                <p class="section-intro">Short, practical write ups on what a game teaches, who it is for, and why it is worth your time.</p>
-
-                <div class="controls">
-                    <div class="pill-group" aria-label="Filter articles by category">
-                        <button class="pill is-active" type="button" data-filter="all" aria-pressed="true">All</button>
-                        <button class="pill" type="button" data-filter="Mathematics" aria-pressed="false">Mathematics</button>
-                        <button class="pill" type="button" data-filter="Physics" aria-pressed="false">Physics</button>
-                        <button class="pill" type="button" data-filter="Engineering & Programming" aria-pressed="false">Engineering & Programming</button>
-                        <button class="pill" type="button" data-filter="Chemistry & Biology" aria-pressed="false">Chemistry & Biology</button>
-                        <button class="pill" type="button" data-filter="Quantum Mechanics & Logic" aria-pressed="false">Quantum Mechanics & Logic</button>
+                <h2>The following chapters collect lecture slides and interactive exercise sets.</h2>
+                <p class="section-intro">Every chapter page links directly to the official lecture slides and launches a built-in C++ compiler where you can try the exercises, explore three levels of progressive hints, and open the complete solutions without unlocking steps.</p>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-top">
+                            <h3>Chapter 1 focuses on the foundations of C++ programming.</h3>
+                        </div>
+                        <p>The companion lecture slides explain how to set up your toolchain, write your first programs, and read compiler feedback in full sentences rather than shorthand.</p>
+                        <p>The interactive exercises rehearse syntax, data types, and input output patterns directly in the embedded compiler so that you can see every result immediately with hints and solutions already available.</p>
                     </div>
-                    <label class="search">
-                        <span class="sr-only">Search articles</span>
-                        <input id="articleSearch" type="search" placeholder="Search games, concepts, or platforms…" autocomplete="off" />
-                    </label>
-                </div>
-                <p class="helper">Tip: pick a category button, then use search to narrow it down.</p>
 
-                <div class="cards-grid" id="articleGrid">
-                    <a class="card" href="articles/grey-hack.html" data-category="Engineering & Programming" data-title="Grey Hack" data-author="Bhavya">
+                    <div class="card">
                         <div class="card-top">
-                            <h3>Grey Hack</h3>
-                            <span class="tag">Engineering &amp; Programming</span>
+                            <h3>Chapter 2 explains control flow and modular thinking in depth.</h3>
                         </div>
-                        <p>Cybersecurity + terminal fluency in a detailed, ethical hacking simulation.</p>
-                        <div class="card-meta">
-                            <span>13+</span>
-                            <span>Steam</span>
-                            <span>Optional multiplayer</span>
-                        </div>
-                        <span class="card-cta">Read article</span>
-                    </a>
-
-                    <a class="card" href="articles/codecombat.html" data-category="Engineering & Programming" data-title="CodeCombat" data-author="Bhavya">
-                        <div class="card-top">
-                            <h3>CodeCombat</h3>
-                            <span class="tag">Engineering &amp; Programming</span>
-                        </div>
-                        <p>Learn real Python/JavaScript through levels that respond instantly to your code.</p>
-                        <div class="card-meta">
-                            <span>5+</span>
-                            <span>Web</span>
-                            <span>Multiplayer</span>
-                        </div>
-                        <span class="card-cta">Read article</span>
-                    </a>
-
-                    <a class="card" href="articles/the-farmer-was-replaced.html" data-category="Engineering & Programming" data-title="The Farmer Was Replaced" data-author="Omer">
-                        <div class="card-top">
-                            <h3>The Farmer Was Replaced</h3>
-                            <span class="tag">Engineering &amp; Programming</span>
-                        </div>
-                        <p>Program a farming drone with Python like code and optimize your automation.</p>
-                        <div class="card-meta">
-                            <span>8+</span>
-                            <span>Windows</span>
-                            <span>Offline</span>
-                        </div>
-                        <span class="card-cta">Read article</span>
-                    </a>
-
-                    <a class="card" href="articles/kerbal-space-program.html" data-category="Physics" data-title="Kerbal Space Program" data-author="Omer">
-                        <div class="card-top">
-                            <h3>Kerbal Space Program</h3>
-                            <span class="tag">Physics</span>
-                        </div>
-                        <p>Build rockets, fail hilariously, and learn orbital mechanics by doing.</p>
-                        <div class="card-meta">
-                            <span>8+</span>
-                            <span>PC/Mac/Linux</span>
-                            <span>Offline</span>
-                        </div>
-                        <span class="card-cta">Read article</span>
-                    </a>
-
-                    <a class="card" href="articles/chemcaper.html" data-category="Chemistry & Biology" data-title="ChemCaper" data-author="Bhavya">
-                        <div class="card-top">
-                            <h3>ChemCaper</h3>
-                            <span class="tag">Chemistry &amp; Biology</span>
-                        </div>
-                        <p>A fantasy RPG that teaches the periodic table, bonding, and reactions through quests.</p>
-                        <div class="card-meta">
-                            <span>8+</span>
-                            <span>Mobile/PC</span>
-                            <span>Offline</span>
-                        </div>
-                        <span class="card-cta">Read article</span>
-                    </a>
-
-                    <a class="card" href="articles/turing-tumble.html" data-category="Quantum Mechanics & Logic" data-title="Turing Tumble" data-author="Mariyam">
-                        <div class="card-top">
-                            <h3>Turing Tumble</h3>
-                            <span class="tag">Quantum Mechanics &amp; Logic</span>
-                        </div>
-                        <p>A hands on logic and computation puzzler. This article is a draft template that needs details.</p>
-                        <div class="card-meta">
-                            <span>8+</span>
-                            <span>Offline</span>
-                            <span>Puzzles</span>
-                        </div>
-                        <span class="card-cta">Read article</span>
-                    </a>
-                </div>
-
-                <p class="empty-state" id="emptyState" hidden>No matches. Try a different search or category.</p>
-            </div>
-        </section>
-
-        <!-- Categories Section -->
-        <section id="categories" class="section alt">
-            <div class="container">
-                <h2>Categories</h2>
-                <div class="category-grid">
-                    <div class="category-card">
-                        <h3>Mathematics</h3>
-                        <p>Puzzles, patterns, and “wait… why does that work?” moments.</p>
+                        <p>The lecture slides cover conditional logic, loops, and function design with narrative examples that align with the in-class demonstrations.</p>
+                        <p>The compiler based labs encourage you to refactor starter code step by step, each time offering three increasingly detailed hints before showing the final solution for comparison.</p>
                     </div>
-                    <div class="category-card">
-                        <h3>Physics</h3>
-                        <p>Motion, forces, energy, and the joy of testing what happens.</p>
+
+                    <div class="card">
+                        <div class="card-top">
+                            <h3>Chapter 3 deepens your skills with arrays and strings.</h3>
+                        </div>
+                        <p>The slides detail array traversal techniques, string handling strategies, and debugging practices that will appear on quizzes and exams.</p>
+                        <p>The matching exercises run in the same built-in compiler, prompting you to implement search, aggregation, and parsing tasks while always keeping the solutions unlocked for self checking.</p>
                     </div>
-                    <div class="category-card">
-                        <h3>Engineering &amp; Programming</h3>
-                        <p>Coding, debugging, automation, building systems that actually run.</p>
+
+                    <div class="card">
+                        <div class="card-top">
+                            <h3>Chapter 4 introduces object-oriented structures in C++.</h3>
+                        </div>
+                        <p>The lecture slides present classes, objects, encapsulation, and constructors through course specific case studies and diagrams.</p>
+                        <p>The practice assignments let you instantiate, extend, and test classes directly online with progressive hints that explain the reasoning before you review the final code.</p>
                     </div>
-                    <div class="category-card">
-                        <h3>Chemistry &amp; Biology</h3>
-                        <p>Elements, reactions, life science, learning through story and exploration.</p>
-                    </div>
-                    <div class="category-card">
-                        <h3>Quantum Mechanics &amp; Logic</h3>
-                        <p>Logic, computation, and brain twisty problem solving.</p>
+
+                    <div class="card">
+                        <div class="card-top">
+                            <h3>Chapter 5 guides you through memory management and advanced practice.</h3>
+                        </div>
+                        <p>The slides unpack pointers, references, dynamic allocation, and best practices for safe resource handling in modern C++.</p>
+                        <p>The integrated compiler challenges focus on tracing memory flow, writing RAII style utilities, and comparing your approach against the fully revealed solution.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Team Section -->
-        <section id="team" class="section">
+        <!-- Tailored Roadmap Section -->
+        <section id="roadmap" class="section alt">
             <div class="container">
-                <h2>Team</h2>
-                <p class="section-intro">We are a small crew collecting great STEM games and writing reviews you can actually use.</p>
-                <div class="team-grid">
-                    <div class="person-card">
-                        <div class="avatar" aria-hidden="true">G</div>
-                        <div>
-                            <h3>Georgia</h3>
-                            <p>Team Lead</p>
-                        </div>
-                    </div>
-                    <div class="person-card">
-                        <div class="avatar" aria-hidden="true">B</div>
-                        <div>
-                            <h3>Bhavya</h3>
-                            <p>Game articles &amp; research</p>
-                        </div>
-                    </div>
-                    <div class="person-card">
-                        <div class="avatar" aria-hidden="true">O</div>
-                        <div>
-                            <h3>Omer</h3>
-                            <p>Game articles &amp; research</p>
-                        </div>
-                    </div>
-                    <div class="person-card">
-                        <div class="avatar" aria-hidden="true">M</div>
-                        <div>
-                            <h3>Mariyam</h3>
-                            <p>Game articles &amp; templates</p>
-                        </div>
-                    </div>
-                    <div class="person-card">
-                        <div class="avatar" aria-hidden="true">S</div>
-                        <div>
-                            <h3>Serah</h3>
-                            <p>Website &amp; design</p>
-                        </div>
-                    </div>
-                </div>
+                <h2>The tailored roadmap keeps you moving forward with purpose.</h2>
+                <p class="section-intro">Answer a short series of reflective questions about your confidence with lecture topics, debugging comfort level, and practice time, then receive a personalized plan that points to the next chapters, exercises, and challenges best suited to your current needs.</p>
+                <p>The roadmap highlights which lecture slides to revisit, which compiler exercises to retry, and when to advance to LeetCode-style practice so that studying always feels timely and effective.</p>
+                <p class="helper">Complete the roadmap check-in after each study session to keep the recommendations precise and actionable.</p>
             </div>
         </section>
 
-        <!-- About Section -->
-        <section id="about" class="section alt">
+        <!-- Interactive Support Section -->
+        <section id="practice" class="section">
             <div class="container">
-                <h2>About</h2>
-                <p class="section-intro">Young4STEM Games is a recommendations project. We try games, write clear reviews, and make it easier to find learning games that do not feel like homework.</p>
+                <h2>The interactive compiler area keeps experimentation stress-free.</h2>
+                <p class="section-intro">The embedded C++ compiler mirrors the tools demonstrated in class, providing consistent formatting, inline error explanations, and the ability to rewind each run so that you can focus on understanding rather than setup.</p>
+                <p>Each exercise page clearly labels the prompt, restates the expected inputs and outputs, gives three tiers of hints that build on each other, and always reveals the reference solution so you never feel blocked.</p>
+                <p>Students can copy any working snippet into their preferred IDE afterward, making this environment a bridge between guided discovery and independent project work.</p>
+            </div>
+        </section>
+
+        <!-- LeetCode Style Problems Section -->
+        <section id="problems" class="section alt">
+            <div class="container">
+                <h2>The following LeetCode-style problems align with COFCS214 goals.</h2>
+                <p class="section-intro">These curated challenges reinforce the same reasoning patterns taught in lecture, making them ideal for developing problem-solving confidence before interviews or advanced electives.</p>
+                <div class="cards-grid">
+                    <div class="card">
+                        <div class="card-top">
+                            <h3>Problem Set A reinforces input validation and branching.</h3>
+                        </div>
+                        <p>Work through problems that require parsing structured text, validating numeric ranges, and selecting the correct branch of execution without relying on shortcuts.</p>
+                        <p>Each prompt mirrors the structure of the in-class examples yet adds realistic constraints so that you can strengthen decision-making speed.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-top">
+                            <h3>Problem Set B develops your iterative data processing habits.</h3>
+                        </div>
+                        <p>Practice iterating over arrays and strings to aggregate metrics, detect anomalies, and transform sequences, exactly like the datasets discussed in Chapter 3.</p>
+                        <p>The provided solutions showcase multiple approaches, including pointer arithmetic and standard library utilities, encouraging deliberate comparison.</p>
+                    </div>
+                    <div class="card">
+                        <div class="card-top">
+                            <h3>Problem Set C challenges you with object-oriented design scenarios.</h3>
+                        </div>
+                        <p>Design lightweight class hierarchies, implement interfaces, and reason about constructors and destructors in scenarios that anticipate Chapter 4 assessments.</p>
+                        <p>Each challenge references the built-in compiler so you can test your approach instantly before reviewing Sarah Rashidi’s fully documented solution.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
         <div class="container">
-            <p>This work is affiliated by Young4STEM @2025. All rights reserved.</p>
-            <p><a href="#home">Back to top</a></p>
+            <p>The website is developed by Sarah Rashidi, © 2025.</p>
+            <p><a href="#home">Return to the top of the course overview.</a></p>
         </div>
     </footer>
 
