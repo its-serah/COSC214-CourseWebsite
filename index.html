@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>COFCS214 Learning Companion</title>
-    <meta name="description" content="An interactive COFCS214 companion site by Sarah Rashidi with lecture slides, compiler-based exercises, and tailored study roadmaps." />
+    <meta name="description" content="An interactive COSC214 companion site by Sarah Rashidi with lecture slides, compiler-based exercises, and tailored study roadmaps." />
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="images/course-icon.svg">
@@ -16,7 +16,7 @@
             <a class="logo" href="#home">
                 <img src="images/course-icon.svg" alt="COFCS214 icon" class="logo-icon">
                 <div class="logo-copy">
-                    <span class="logo-eyebrow">COFCS214</span>
+                    <span class="logo-eyebrow">COSC214</span>
                     <span class="logo-title">Learning Companion</span>
                 </div>
             </a>
@@ -45,62 +45,124 @@
     <main>
         <!-- Hero Section -->
         <section id="home" class="hero">
-            <div class="container">
-                <p class="eyebrow">You are exploring COFCS214 – Introduction to Programming with C++.</p>
-                <h1>This website is part of the COFCS214 – Introduction to Programming with C++ course, built and instructed by Sarah Rashidi.</h1>
-                <p class="lead">This interactive learning website supports you during every stage of COFCS214 and keeps preparing you even after the course ends, combining guided study materials with continuously updated practice experiences.</p>
-                <div class="hero-actions">
-                    <a href="#chapters" class="btn btn-primary">Review the chapter directory now.</a>
-                    <a href="#roadmap" class="btn btn-secondary">Discover how the tailored roadmap works.</a>
+            <div class="container hero__grid">
+                <div class="hero__intro">
+                    <p class="eyebrow">COSC214 · Introduction to Programming with C++</p>
+                    <h1>Sharpen your C++ fundamentals with a guided learning companion.</h1>
+                    <p class="lead">Every resource for COSC214 lives here—curated lecture decks, embedded compiler exercises, LeetCode-style challenges, and a reflective roadmap that adapts around your study rhythm.</p>
+                    <div class="hero-actions">
+                        <a href="#chapters" class="btn btn-primary">Browse the chapter hub</a>
+                        <a href="#roadmap" class="btn btn-secondary">Explore the study roadmap</a>
+                    </div>
+                    <ul class="hero-stats" aria-label="Course resource highlights">
+                        <li>
+                            <span class="hero-stat__label">5 learning arcs</span>
+                            <span class="hero-stat__value">Slides + labs</span>
+                        </li>
+                        <li>
+                            <span class="hero-stat__label">3 hint levels</span>
+                            <span class="hero-stat__value">Always unlocked</span>
+                        </li>
+                        <li>
+                            <span class="hero-stat__label">Weekly check-ins</span>
+                            <span class="hero-stat__value">Roadmap ready</span>
+                        </li>
+                    </ul>
                 </div>
+                <aside class="hero__panel" aria-label="Course snapshot">
+                    <div class="panel-header">
+                        <span class="badge">Now Live</span>
+                        <h2>COFCS214 Learning Companion</h2>
+                        <p>Built and instructed by Sarah Rashidi. Structured for confidence, not cramming.</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-row">
+                            <p class="panel-title">Lecture support</p>
+                            <p class="panel-copy">Direct links to every slide deck plus annotated walkthroughs.</p>
+                        </div>
+                        <div class="panel-row">
+                            <p class="panel-title">Compiler playground</p>
+                            <p class="panel-copy">Run C++ snippets, view inline compiler feedback, rewind each attempt.</p>
+                        </div>
+                        <div class="panel-row">
+                            <p class="panel-title">Personalized plan</p>
+                            <p class="panel-copy">Short reflections translate into adaptive recommendations.</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="panel-cta">Need clarification? Reach out directly →</a>
+                </aside>
             </div>
         </section>
 
         <!-- Chapters Section -->
         <section id="chapters" class="section">
             <div class="container">
-                <h2>The following chapters collect lecture slides and interactive exercise sets.</h2>
-                <p class="section-intro">Every chapter page links directly to the official lecture slides and launches a built-in C++ compiler where you can try the exercises, explore three levels of progressive hints, and open the complete solutions without unlocking steps.</p>
-                <div class="cards-grid">
-                    <div class="card">
-                        <div class="card-top">
-                            <h3>Chapter 1 focuses on the foundations of C++ programming.</h3>
+                <div class="section-header">
+                    <p class="eyebrow">Chapter Directory</p>
+                    <h2>Every chapter blends lecture slides with compiler-based rehearsals.</h2>
+                    <p class="section-intro">Jump into the module you need, review the slides, then switch immediately into the aligned code lab. Hints stay unlocked, and solutions are always one click away.</p>
+                </div>
+                <div class="chapter-grid">
+                    <article class="chapter-card">
+                        <div class="card__head">
+                            <span class="badge badge-outline">Chapter 01</span>
+                            <h3>Foundations of C++ programming</h3>
                         </div>
-                        <p>The companion lecture slides explain how to set up your toolchain, write your first programs, and read compiler feedback in full sentences rather than shorthand.</p>
-                        <p>The interactive exercises rehearse syntax, data types, and input output patterns directly in the embedded compiler so that you can see every result immediately with hints and solutions already available.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-top">
-                            <h3>Chapter 2 explains control flow and modular thinking in depth.</h3>
+                        <p>Establish your toolchain, write first programs, and decode compiler feedback line-by-line.</p>
+                        <ul class="card__list">
+                            <li>Environment setup walkthrough</li>
+                            <li>Syntax, data types, and IO drills</li>
+                            <li>Instant feedback via embedded compiler</li>
+                        </ul>
+                    </article>
+                    <article class="chapter-card">
+                        <div class="card__head">
+                            <span class="badge badge-outline">Chapter 02</span>
+                            <h3>Control flow and modular thinking</h3>
                         </div>
-                        <p>The lecture slides cover conditional logic, loops, and function design with narrative examples that align with the in-class demonstrations.</p>
-                        <p>The compiler based labs encourage you to refactor starter code step by step, each time offering three increasingly detailed hints before showing the final solution for comparison.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-top">
-                            <h3>Chapter 3 deepens your skills with arrays and strings.</h3>
+                        <p>Follow narrative examples that demystify branching, loops, and function design.</p>
+                        <ul class="card__list">
+                            <li>Conditional logic labs</li>
+                            <li>Three tiers of progressive hints</li>
+                            <li>Solution reveal for each refactor</li>
+                        </ul>
+                    </article>
+                    <article class="chapter-card">
+                        <div class="card__head">
+                            <span class="badge badge-outline">Chapter 03</span>
+                            <h3>Arrays, strings, and debugging fluency</h3>
                         </div>
-                        <p>The slides detail array traversal techniques, string handling strategies, and debugging practices that will appear on quizzes and exams.</p>
-                        <p>The matching exercises run in the same built-in compiler, prompting you to implement search, aggregation, and parsing tasks while always keeping the solutions unlocked for self checking.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-top">
-                            <h3>Chapter 4 introduces object-oriented structures in C++.</h3>
+                        <p>Practice traversal techniques and parsing strategies that appear on quizzes and exams.</p>
+                        <ul class="card__list">
+                            <li>Search and aggregation scenarios</li>
+                            <li>String handling case studies</li>
+                            <li>Unlocked solutions for self-checks</li>
+                        </ul>
+                    </article>
+                    <article class="chapter-card">
+                        <div class="card__head">
+                            <span class="badge badge-outline">Chapter 04</span>
+                            <h3>Object-oriented structures</h3>
                         </div>
-                        <p>The lecture slides present classes, objects, encapsulation, and constructors through course specific case studies and diagrams.</p>
-                        <p>The practice assignments let you instantiate, extend, and test classes directly online with progressive hints that explain the reasoning before you review the final code.</p>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-top">
-                            <h3>Chapter 5 guides you through memory management and advanced practice.</h3>
+                        <p>Adopt class-based thinking with encapsulation, constructors, and course-specific case studies.</p>
+                        <ul class="card__list">
+                            <li>Instantiate and extend classes online</li>
+                            <li>Hints that explain the reasoning</li>
+                            <li>Compare against documented solutions</li>
+                        </ul>
+                    </article>
+                    <article class="chapter-card">
+                        <div class="card__head">
+                            <span class="badge badge-outline">Chapter 05</span>
+                            <h3>Memory management and advanced practice</h3>
                         </div>
-                        <p>The slides unpack pointers, references, dynamic allocation, and best practices for safe resource handling in modern C++.</p>
-                        <p>The integrated compiler challenges focus on tracing memory flow, writing RAII style utilities, and comparing your approach against the fully revealed solution.</p>
-                    </div>
+                        <p>Trace pointers, references, and dynamic allocation the modern C++ way.</p>
+                        <ul class="card__list">
+                            <li>RAII-style exercises with live feedback</li>
+                            <li>Resource handling best practices</li>
+                            <li>Side-by-side solutions to compare</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
         </section>
@@ -108,60 +170,89 @@
         <!-- Tailored Roadmap Section -->
         <section id="roadmap" class="section alt">
             <div class="container">
-                <h2>The tailored roadmap keeps you moving forward with purpose.</h2>
-                <p class="section-intro">Answer a short series of reflective questions about your confidence with lecture topics, debugging comfort level, and practice time, then receive a personalized plan that points to the next chapters, exercises, and challenges best suited to your current needs.</p>
-                <p>The roadmap highlights which lecture slides to revisit, which compiler exercises to retry, and when to advance to LeetCode-style practice so that studying always feels timely and effective.</p>
-                <p class="helper">Complete the roadmap check-in after each study session to keep the recommendations precise and actionable.</p>
+                <div class="section-header">
+                    <p class="eyebrow">Tailored Roadmap</p>
+                    <h2>Short reflections unlock a personalized study plan.</h2>
+                    <p class="section-intro">Answer a few focused questions after each session to spotlight the slides, compiler labs, and challenges that will move the needle fastest.</p>
+                </div>
+                <div class="timeline">
+                    <article class="timeline__item">
+                        <div class="timeline__step">Check-in</div>
+                        <p>Assess your confidence with the latest lecture, your debugging comfort, and how much time you can invest next.</p>
+                    </article>
+                    <article class="timeline__item">
+                        <div class="timeline__step">Calibrate</div>
+                        <p>Receive a curated mix of slides to review, compiler exercises to replay, and LeetCode-style practice to attempt.</p>
+                    </article>
+                    <article class="timeline__item">
+                        <div class="timeline__step">Advance</div>
+                        <p>Track when to escalate into more advanced topics or revisit fundamentals so studying always feels purposeful.</p>
+                    </article>
+                </div>
+                <p class="helper">Revisit the roadmap after each study sprint to keep recommendations precise.</p>
             </div>
         </section>
 
         <!-- Interactive Support Section -->
         <section id="exercises" class="section">
             <div class="container">
-                <h2>The interactive compiler area keeps experimentation stress-free.</h2>
-                <p class="section-intro">The embedded C++ compiler mirrors the tools demonstrated in class, providing consistent formatting, inline error explanations, and the ability to rewind each run so that you can focus on understanding rather than setup.</p>
-                <p>Each exercise page clearly labels the prompt, restates the expected inputs and outputs, gives three tiers of hints that build on each other, and always reveals the reference solution so you never feel blocked.</p>
-                <p>Students can copy any working snippet into their preferred IDE afterward, making this environment a bridge between guided discovery and independent project work.</p>
+                <div class="section-header">
+                    <p class="eyebrow">Interactive Support</p>
+                    <h2>The embedded compiler keeps experimentation stress-free.</h2>
+                    <p class="section-intro">Exercises mirror the classroom environment with inline explanations and rewindable runs so you can focus on ideas over setup.</p>
+                </div>
+                <div class="learning-grid">
+                    <article class="learning-card">
+                        <h3>Compiler playground</h3>
+                        <p>Prompts restate inputs, outputs, and success criteria. Run code, inspect inline errors, and rewind each attempt.</p>
+                    </article>
+                    <article class="learning-card">
+                        <h3>Guided hints</h3>
+                        <p>Three tiers of hints build on one another before revealing the reference solution—no unlocking required.</p>
+                    </article>
+                    <article class="learning-card">
+                        <h3>Bridge to IDEs</h3>
+                        <p>Copy any working snippet to your preferred IDE to keep momentum between guided discovery and independent work.</p>
+                    </article>
+                </div>
             </div>
         </section>
 
         <!-- LeetCode Style Problems Section -->
         <section id="problems" class="section alt">
             <div class="container">
-                <h2>The following LeetCode-style problems align with COFCS214 goals.</h2>
-                <p class="section-intro">These curated challenges reinforce the same reasoning patterns taught in lecture, making them ideal for developing problem-solving confidence before interviews or advanced electives.</p>
-                <div class="cards-grid">
-                    <div class="card">
-                        <div class="card-top">
-                            <h3>Problem Set A reinforces input validation and branching.</h3>
-                        </div>
-                        <p>Work through problems that require parsing structured text, validating numeric ranges, and selecting the correct branch of execution without relying on shortcuts.</p>
-                        <p>Each prompt mirrors the structure of the in-class examples yet adds realistic constraints so that you can strengthen decision-making speed.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-top">
-                            <h3>Problem Set B develops your iterative data processing habits.</h3>
-                        </div>
-                        <p>Practice iterating over arrays and strings to aggregate metrics, detect anomalies, and transform sequences, exactly like the datasets discussed in Chapter 3.</p>
-                        <p>The provided solutions showcase multiple approaches, including pointer arithmetic and standard library utilities, encouraging deliberate comparison.</p>
-                    </div>
-                    <div class="card">
-                        <div class="card-top">
-                            <h3>Problem Set C challenges you with object-oriented design scenarios.</h3>
-                        </div>
-                        <p>Design lightweight class hierarchies, implement interfaces, and reason about constructors and destructors in scenarios that anticipate Chapter 4 assessments.</p>
-                        <p>Each challenge references the built-in compiler so you can test your approach instantly before reviewing Sarah Rashidi’s fully documented solution.</p>
-                    </div>
+                <div class="section-header">
+                    <p class="eyebrow">Problem Labs</p>
+                    <h2>LeetCode-style challenges aligned with COFCS214 goals.</h2>
+                    <p class="section-intro">Each set reinforces the same reasoning patterns taught in lecture so you can stretch your problem-solving habits with familiar material.</p>
+                </div>
+                <div class="problem-grid">
+                    <article class="problem-card">
+                        <h3>Problem Set A · Input validation & branching</h3>
+                        <p>Parse structured text, protect numeric ranges, and select the right execution branch under realistic constraints.</p>
+                    </article>
+                    <article class="problem-card">
+                        <h3>Problem Set B · Iterative data processing</h3>
+                        <p>Iterate over arrays and strings to aggregate metrics, detect anomalies, and transform sequences.</p>
+                    </article>
+                    <article class="problem-card">
+                        <h3>Problem Set C · Object-oriented design</h3>
+                        <p>Design lightweight class hierarchies, reason about constructors and destructors, and verify ideas in the built-in compiler.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
         <section id="contact" class="section contact">
-            <div class="container">
-                <h2>Direct course communication stays open.</h2>
-                <p class="section-intro">For individualized guidance, clarification on assignments, or to share feedback about this platform, email Sarah Rashidi at <a href="mailto:serah.elrashidi@gmail.com">serah.elrashidi@gmail.com</a> and describe exactly which chapter, exercise, or roadmap step you are working through.</p>
-                <p>Responses emphasize actionable study steps, so you always leave with a next action rather than general encouragement.</p>
+            <div class="container contact-card">
+                <div>
+                    <p class="eyebrow">Contact</p>
+                    <h2>Direct course communication stays open.</h2>
+                    <p class="section-intro">For individualized guidance, clarification on assignments, or to share feedback about this platform, email Sarah Rashidi and include the chapter, exercise, or roadmap step you are working through.</p>
+                </div>
+                <a class="contact-link" href="mailto:serah.elrashidi@gmail.com">serah.elrashidi@gmail.com</a>
+                <p class="helper">Responses emphasize actionable next steps, so you always leave with a plan.</p>
             </div>
         </section>
     </main>
