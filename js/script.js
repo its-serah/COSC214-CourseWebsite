@@ -58,6 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
     setupMobileNav();
     initCompilerPlayground();
     initRoadmapForm();
+    initBackToTop();
 });
 
 function initCompilerPlayground() {
@@ -268,4 +269,26 @@ function initRoadmapForm() {
         });
         renderPlan(plan);
     });
+}
+
+function initBackToTop() {
+    const button = document.querySelector("[data-back-to-top]");
+    if (!button) return;
+
+    const threshold = 320;
+
+    function toggleVisibility() {
+        if (window.scrollY > threshold) {
+            button.classList.add("is-visible");
+        } else {
+            button.classList.remove("is-visible");
+        }
+    }
+
+    button.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    window.addEventListener("scroll", toggleVisibility);
+    toggleVisibility();
 }

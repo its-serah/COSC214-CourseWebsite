@@ -865,25 +865,47 @@ body[data-theme="light"] .header {
     color: var(--color-muted);
 }
 
-.back-to-top {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 12px;
+.footer a {
     color: var(--color-accent);
     font-weight: 600;
 }
 
-.back-to-top svg {
+.back-to-top-fab {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong));
+    color: #0b1120;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-soft);
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 200ms ease, transform 200ms ease;
+    z-index: 900;
+}
+
+.back-to-top-fab svg {
     width: 20px;
     height: 20px;
     fill: currentColor;
 }
 
-.footer a {
-    color: var(--color-accent);
-    font-weight: 600;
+.back-to-top-fab.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.back-to-top-fab:focus-visible {
+    outline: 2px solid var(--color-highlight);
+    outline-offset: 2px;
 }
 
 @media (max-width: 1100px) {
