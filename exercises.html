@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSC214 Exercises</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/course-icon.svg">
+</head>
+<body data-theme="dark">
+    <a class="skip-link" href="#main">Skip directly to the exercise overview.</a>
+    <header class="header">
+        <div class="container header__inner">
+            <a class="logo" href="index.html#home">
+                <img src="images/course-icon.svg" alt="COFCS214 icon" class="logo-icon">
+                <div class="logo-copy">
+                    <span class="logo-eyebrow">COSC214</span>
+                    <span class="logo-title">Learning Companion</span>
+                </div>
+            </a>
+            <nav class="navbar" id="siteNav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a class="nav-link" href="index.html#home">Overview</a></li>
+                    <li><a class="nav-link" href="chapters.html">Chapters</a></li>
+                    <li><a class="nav-link" href="exercises.html">Exercises</a></li>
+                    <li><a class="nav-link" href="roadmap.html">Roadmap</a></li>
+                    <li><a class="nav-link" href="compiler.html">Compiler</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle aria-label="Switch to light mode" title="Switch to light mode">
+                    <span class="theme-toggle__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M6.76 4.84l-1.8-1.79L3.5 4.5l1.79 1.8 1.47-1.46zm10.45 12.02 1.79 1.8 1.45-1.46-1.8-1.79-1.44 1.45zM12 5a7 7 0 0 0-7 7c0 3.08 1.99 5.69 4.78 6.65L9.5 21h5l-.28-2.35A7.002 7.002 0 0 0 19 12a7 7 0 0 0-7-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm9-7h-3v2h3v-2zm-15 0H3v2h3v-2zm6-8h-2v3h2V2zm0 15h-2v3h2v-3zm5.66-9.34 1.79-1.8-1.46-1.45-1.79 1.79 1.46 1.46zm-9.9 9.9-1.79 1.8 1.46 1.45 1.79-1.79-1.46-1.46z"/>
+                        </svg>
+                    </span>
+                </button>
+                <button class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-hero">
+            <div class="container">
+                <p class="eyebrow">Interactive Exercises</p>
+                <h1>Practice that mirrors the pace of COSC214 lectures.</h1>
+                <p class="page-lead">Each prompt includes restated inputs and outputs, inline feedback, and progressive hints so you can quickly rewind mistakes without guessing what broke.</p>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="container">
+                <div class="learning-grid">
+                    <article class="learning-card">
+                        <h3>Purpose-built prompts</h3>
+                        <p>Every lab starts with the lecture story, restates success criteria, and links to the matching slide deck.</p>
+                    </article>
+                    <article class="learning-card">
+                        <h3>Guided hints & solutions</h3>
+                        <p>Three tiers of hints build context, then the reference solution remains unlocked for deliberate comparison.</p>
+                    </article>
+                    <article class="learning-card">
+                        <h3>Compiler parity</h3>
+                        <p>The embedded playground mirrors the toolchain used in lecture so syntax checks feel familiar.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="container">
+                <div class="teaser-card">
+                    <div>
+                        <p class="eyebrow">Workflow</p>
+                        <h3>Move from slides → scaffolded hints → independent IDE time.</h3>
+                        <p class="section-intro">Screenshots and inline explanations guide you through each compiler run. Copy any working snippet straight into your IDE once you finish testing.</p>
+                    </div>
+                    <a class="btn btn-primary" href="compiler.html" target="_blank" rel="noopener">Open the C++ playground ↗</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer" id="contact">
+        <div class="container">
+            <p class="footer-contact">Need help? Email Sarah Rashidi at <a href="mailto:serah.elrashidi@gmail.com">serah.elrashidi@gmail.com</a> with the chapter or exercise you’re working on.</p>
+            <p>The website is developed by Sarah Rashidi, © 2025.</p>
+            <p><a href="index.html#home">Return to the top of the course overview.</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSC214 Study Roadmap</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/course-icon.svg">
+</head>
+<body data-theme="dark">
+    <a class="skip-link" href="#main">Skip directly to the roadmap form.</a>
+    <header class="header">
+        <div class="container header__inner">
+            <a class="logo" href="index.html#home">
+                <img src="images/course-icon.svg" alt="COFCS214 icon" class="logo-icon">
+                <div class="logo-copy">
+                    <span class="logo-eyebrow">COSC214</span>
+                    <span class="logo-title">Learning Companion</span>
+                </div>
+            </a>
+            <nav class="navbar" id="siteNav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a class="nav-link" href="index.html#home">Overview</a></li>
+                    <li><a class="nav-link" href="chapters.html">Chapters</a></li>
+                    <li><a class="nav-link" href="exercises.html">Exercises</a></li>
+                    <li><a class="nav-link" href="roadmap.html">Roadmap</a></li>
+                    <li><a class="nav-link" href="compiler.html">Compiler</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle aria-label="Switch to light mode" title="Switch to light mode">
+                    <span class="theme-toggle__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M6.76 4.84l-1.8-1.79L3.5 4.5l1.79 1.8 1.47-1.46zm10.45 12.02 1.79 1.8 1.45-1.46-1.8-1.79-1.44 1.45zM12 5a7 7 0 0 0-7 7c0 3.08 1.99 5.69 4.78 6.65L9.5 21h5l-.28-2.35A7.002 7.002 0 0 0 19 12a7 7 0 0 0-7-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm9-7h-3v2h3v-2zm-15 0H3v2h3v-2zm6-8h-2v3h2V2zm0 15h-2v3h2v-3zm5.66-9.34 1.79-1.8-1.46-1.45-1.79 1.79 1.46 1.46zm-9.9 9.9-1.79 1.8 1.46 1.45 1.79-1.79-1.46-1.46z"/>
+                        </svg>
+                    </span>
+                </button>
+                <button class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-hero">
+            <div class="container">
+                <p class="eyebrow">Tailored Roadmap</p>
+                <h1>Answer a few prompts, get a precise study sprint.</h1>
+                <p class="page-lead">Your responses stay local—use them to recalibrate after each study block and keep moving with purpose.</p>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="container page-layout">
+                <form class="roadmap-form" data-roadmap-form>
+                    <label>
+                        Confidence with the latest lecture
+                        <select name="confidence" required>
+                            <option value="high">Feeling confident</option>
+                            <option value="medium" selected>Steady but needs review</option>
+                            <option value="low">Need to rebuild understanding</option>
+                        </select>
+                    </label>
+                    <label>
+                        Debugging mindset right now
+                        <select name="debugging" required>
+                            <option value="calm" selected>Confident in tracing errors</option>
+                            <option value="uncertain">Somewhat unsure</option>
+                            <option value="stuck">Feeling stuck when bugs appear</option>
+                        </select>
+                    </label>
+                    <label>
+                        Time available before the next class (minutes)
+                        <input type="number" name="time" min="15" max="240" step="5" value="60" required>
+                    </label>
+                    <label>
+                        Focus for this session
+                        <select name="goal" required>
+                            <option value="review" selected>Reinforce fundamentals</option>
+                            <option value="push">Advance to harder material</option>
+                            <option value="interview">Interview-style practice</option>
+                        </select>
+                    </label>
+                    <label>
+                        Topic or pain point (optional)
+                        <textarea name="topic" placeholder="e.g. pointers vs references, nested loops, debugging segmentation faults"></textarea>
+                    </label>
+                    <button class="btn btn-primary" type="submit">Generate my roadmap</button>
+                </form>
+
+                <div class="roadmap-results" data-roadmap-result>
+                    <h3>Your personalized sprint will appear here.</h3>
+                    <p>Submit the form to see suggested chapters, exercises, and problem sets tailored to your answers.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <p class="footer-contact">Need help? Email Sarah Rashidi at <a href="mailto:serah.elrashidi@gmail.com">serah.elrashidi@gmail.com</a> with the chapter or exercise you’re working on.</p>
+            <p>The website is developed by Sarah Rashidi, © 2025.</p>
+            <p><a href="index.html#home">Return to the top of the course overview.</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

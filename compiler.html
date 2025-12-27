@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSC214 Compiler Playground</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/course-icon.svg">
+</head>
+<body data-theme="dark">
+    <a class="skip-link" href="#main">Skip directly to the compiler.</a>
+    <header class="header">
+        <div class="container header__inner">
+            <a class="logo" href="index.html#home">
+                <img src="images/course-icon.svg" alt="COFCS214 icon" class="logo-icon">
+                <div class="logo-copy">
+                    <span class="logo-eyebrow">COSC214</span>
+                    <span class="logo-title">Learning Companion</span>
+                </div>
+            </a>
+            <nav class="navbar" id="siteNav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a class="nav-link" href="index.html#home">Overview</a></li>
+                    <li><a class="nav-link" href="chapters.html">Chapters</a></li>
+                    <li><a class="nav-link" href="exercises.html">Exercises</a></li>
+                    <li><a class="nav-link" href="roadmap.html">Roadmap</a></li>
+                    <li><a class="nav-link" href="compiler.html">Compiler</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle aria-label="Switch to light mode" title="Switch to light mode">
+                    <span class="theme-toggle__icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" focusable="false">
+                            <path d="M6.76 4.84l-1.8-1.79L3.5 4.5l1.79 1.8 1.47-1.46zm10.45 12.02 1.79 1.8 1.45-1.46-1.8-1.79-1.44 1.45zM12 5a7 7 0 0 0-7 7c0 3.08 1.99 5.69 4.78 6.65L9.5 21h5l-.28-2.35A7.002 7.002 0 0 0 19 12a7 7 0 0 0-7-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm9-7h-3v2h3v-2zm-15 0H3v2h3v-2zm6-8h-2v3h2V2zm0 15h-2v3h2v-3zm5.66-9.34 1.79-1.8-1.46-1.45-1.79 1.79 1.46 1.46zm-9.9 9.9-1.79 1.8 1.46 1.45 1.79-1.79-1.46-1.46z"/>
+                        </svg>
+                    </span>
+                </button>
+                <button class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-hero">
+            <div class="container">
+                <p class="eyebrow">Live Compiler</p>
+                <h1>Run COSC214 labs directly in your browser.</h1>
+                <p class="page-lead">Start from a blank slate or load one of the common templates. The Wandbox API compiles everything server-side so you can focus on reasoning through the output.</p>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="container">
+                <div class="compiler-shell" id="cpp-playground">
+                    <div class="compiler-header">
+                        <div>
+                            <h3>Embedded C++ playground</h3>
+                            <p>Write, run, and iterate directly in your browser. Powered by the Wandbox API.</p>
+                        </div>
+                        <label class="compiler-template">
+                            <span>Starter template</span>
+                            <select data-compiler-template>
+                                <option value="custom">Blank (start from scratch)</option>
+                                <option value="hello">Hello world</option>
+                                <option value="sum">Read & sum integers</option>
+                                <option value="loop">Loop with conditionals</option>
+                            </select>
+                        </label>
+                    </div>
+                    <label class="editor-label" for="compiler-code">C++ Source</label>
+                    <textarea id="compiler-code" class="code-editor" data-compiler-code spellcheck="false"></textarea>
+                    <label class="editor-label" for="compiler-stdin">Standard Input <span>(optional)</span></label>
+                    <textarea id="compiler-stdin" class="stdin-editor" data-compiler-stdin spellcheck="false" placeholder="Provide sample input that will be piped to std::cin..."></textarea>
+                    <div class="compiler-controls">
+                        <button class="btn btn-primary" type="button" data-compiler-run>Run &amp; show output</button>
+                        <span class="compiler-status" data-compiler-status aria-live="polite">Ready to compile.</span>
+                    </div>
+                    <div class="compiler-output">
+                        <h4>Program output</h4>
+                        <pre data-compiler-output aria-live="polite">Your stdout and compiler logs will appear here.</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <p class="footer-contact">Need help? Email Sarah Rashidi at <a href="mailto:serah.elrashidi@gmail.com">serah.elrashidi@gmail.com</a> with the chapter or exercise you’re working on.</p>
+            <p>The website is developed by Sarah Rashidi, © 2025.</p>
+            <p><a href="index.html#home">Return to the top of the course overview.</a></p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
