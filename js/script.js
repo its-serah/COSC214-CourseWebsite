@@ -286,39 +286,78 @@ function initVibeStage() {
     const prevButton = document.querySelector("[data-vibe-prev]");
     const nextButton = document.querySelector("[data-vibe-next]");
 
-    // Replace or expand these entries once new background images land in /images.
     const backgrounds = [
         {
-            title: "Sunrise loft",
-            description: "Warm amber glow plus soft synths for slow mornings.",
-            gradient: "linear-gradient(135deg, #f6d365 0%, #fda085 100%)",
-            overlay: "rgba(4, 6, 16, 0.35)",
+            title: "Background 01 · Dawn loft",
+            description: "Amber sunrise glow with soft synth reflections you just dropped into /images.",
+            image: "images/Background1.jpg",
+            overlay: "rgba(2, 5, 12, 0.35)",
             link: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
-            linkLabel: "Play lofi girl radio"
+            linkLabel: "Play lofi beats"
         },
         {
-            title: "Neon late night",
-            description: "Deep blues with neon trims—perfect for night sprints.",
-            gradient: "linear-gradient(135deg, #1f1c2c 0%, #928dab 100%)",
-            overlay: "rgba(5, 6, 15, 0.45)",
-            link: "https://www.youtube.com/watch?v=DWcJFNfaw9c",
-            linkLabel: "Cafe ambience"
-        },
-        {
-            title: "City rain window",
-            description: "Calm teal haze and distant thunder for rainy focus days.",
-            gradient: "linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)",
-            overlay: "rgba(2, 6, 10, 0.55)",
+            title: "Background 02 · Chill nebula",
+            description: "A moody wallpaper from your pack—use it for night sprints.",
+            image: "images/Background2.jpg",
+            overlay: "rgba(3, 6, 14, 0.45)",
             link: "https://www.youtube.com/watch?v=3jWRrafhO7M",
             linkLabel: "Rain room"
         },
         {
-            title: "Minimal dusk studio",
-            description: "Dusty lavender walls and a single warm lamp.",
-            gradient: "linear-gradient(140deg, #a18cd1 0%, #fbc2eb 100%)",
-            overlay: "rgba(10, 8, 15, 0.3)",
+            title: "Background 03 · Midnight desk",
+            description: "Clean workstation energy—drop the timer in the center for full effect.",
+            image: "images/Background3.jpg",
+            overlay: "rgba(1, 4, 8, 0.45)",
+            link: "https://www.youtube.com/watch?v=DWcJFNfaw9c",
+            linkLabel: "Cafe ambience"
+        },
+        {
+            title: "Background 04 · Gradient focus",
+            description: "Bold gradient wallpaper made for quick resets between blocks.",
+            image: "images/Background4.jpg",
+            overlay: "rgba(6, 4, 12, 0.35)",
             link: "https://imissmycafe.com/",
             linkLabel: "Mix a cafe"
+        },
+        {
+            title: "Background 05 · City glow",
+            description: "City lights plus slow clouds—keep the timer docked in the corner.",
+            image: "images/Background5.jpg",
+            overlay: "rgba(5, 7, 16, 0.4)",
+            link: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
+            linkLabel: "Play lofi beats"
+        },
+        {
+            title: "Background 06 · Emerald night",
+            description: "Deep teal scenery from your upload—ideal for rainy break blocks.",
+            image: "images/Background6.jpg",
+            overlay: "rgba(2, 8, 8, 0.45)",
+            link: "https://www.youtube.com/watch?v=3jWRrafhO7M",
+            linkLabel: "Rain room"
+        },
+        {
+            title: "Background 07 · Cozy corner",
+            description: "Warm studio lights with soft blur—great for centering the timer.",
+            image: "images/Background7.jpg",
+            overlay: "rgba(8, 6, 10, 0.4)",
+            link: "https://www.youtube.com/watch?v=DWcJFNfaw9c",
+            linkLabel: "Cafe ambience"
+        },
+        {
+            title: "Background 08 · Retro grid",
+            description: "The neon-grid wallpaper you added—lean into the synthy vibe.",
+            image: "images/Background8.jpg",
+            overlay: "rgba(6, 5, 14, 0.4)",
+            link: "https://imissmycafe.com/",
+            linkLabel: "Mix a cafe"
+        },
+        {
+            title: "Background 09 · Lunar calm",
+            description: "Dreamy blues with soft fog—finish the session with mellow tones.",
+            image: "images/Background9.jpg",
+            overlay: "rgba(3, 5, 12, 0.4)",
+            link: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
+            linkLabel: "Play lofi beats"
         }
     ];
 

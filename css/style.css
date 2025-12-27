@@ -1004,7 +1004,7 @@ body[data-theme="light"] .testimonial-card {
     min-height: 440px;
     padding: clamp(24px, 5vw, 48px);
     padding-right: clamp(32px, 35vw, 360px);
-    background: radial-gradient(circle at top, rgba(4, 6, 10, 0.6), rgba(4, 6, 10, 0.95));
+    background: #05070f;
     background-size: cover;
     background-position: center;
     overflow: hidden;
@@ -1020,7 +1020,7 @@ body[data-theme="light"] .testimonial-card {
     content: "";
     position: absolute;
     inset: 0;
-    background: var(--stage-overlay, rgba(5, 7, 16, 0.55));
+    background: var(--stage-overlay, rgba(5, 7, 16, 0.4));
     pointer-events: none;
 }
 
