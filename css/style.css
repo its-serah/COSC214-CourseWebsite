@@ -658,6 +658,44 @@ body[data-theme="light"] .testimonial-card {
     color: var(--color-muted);
 }
 
+.feedback-contribute {
+    background: linear-gradient(135deg, rgba(0, 184, 169, 0.12), rgba(255, 138, 60, 0.12));
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.contribute-card {
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--color-border);
+    background: var(--color-panel);
+    padding: clamp(24px, 4vw, 36px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    align-items: center;
+}
+
+.contribute-copy h3 {
+    margin: 10px 0 12px;
+}
+
+.contribute-copy p {
+    color: var(--color-muted);
+    margin-bottom: 8px;
+}
+
+.contribute-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+.contribute-note {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
 .section-cta {
     margin-top: 32px;
     text-align: center;
