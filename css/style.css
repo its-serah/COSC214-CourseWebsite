@@ -1154,6 +1154,12 @@ body[data-theme="light"] .testimonial-card {
     margin: 0;
 }
 
+.timer-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .timer-placement {
     display: inline-flex;
     gap: 6px;
@@ -1172,6 +1178,41 @@ body[data-theme="light"] .testimonial-card {
 .timer-placement button.is-active {
     background: rgba(255, 255, 255, 0.15);
     border-color: rgba(255, 255, 255, 0.35);
+}
+
+.timer-collapse {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: transparent;
+    color: #fff;
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.pomodoro-body {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pomodoro-floating.is-collapsed {
+    width: auto;
+    min-width: 0;
+    padding: 16px;
+}
+
+.pomodoro-floating.is-collapsed .pomodoro-body,
+.pomodoro-floating.is-collapsed .timer-placement,
+.pomodoro-floating.is-collapsed .pomodoro-note,
+.pomodoro-floating.is-collapsed .pomodoro-controls,
+.pomodoro-floating.is-collapsed .pomodoro-modes {
+    display: none;
+}
+
+.pomodoro-floating.is-collapsed .timer-collapse {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
 }
 
 .vibe-stage__nav {

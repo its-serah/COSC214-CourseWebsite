@@ -66,21 +66,26 @@
                     <div class="pomodoro-floating" aria-label="Pomodoro timer" data-pomodoro-panel data-placement="corner">
                         <div class="pomodoro-header">
                             <h3>Timer</h3>
-                            <div class="timer-placement">
-                                <button type="button" class="is-active" data-timer-placement="corner">Corner</button>
-                                <button type="button" data-timer-placement="center">Center</button>
+                            <div class="timer-controls">
+                                <div class="timer-placement">
+                                    <button type="button" class="is-active" data-timer-placement="corner">Corner</button>
+                                    <button type="button" data-timer-placement="center">Center</button>
+                                </div>
+                                <button class="timer-collapse" type="button" data-timer-collapse aria-pressed="false">Minimize</button>
                             </div>
                         </div>
                         <div class="pomodoro-display" data-pomodoro-display>25:00</div>
-                        <div class="pomodoro-controls">
-                            <button class="btn btn-primary" type="button" data-pomodoro-start>Start session</button>
-                            <button class="btn btn-secondary" type="button" data-pomodoro-reset>Reset</button>
+                        <div class="pomodoro-body">
+                            <div class="pomodoro-controls">
+                                <button class="btn btn-primary" type="button" data-pomodoro-start>Start session</button>
+                                <button class="btn btn-secondary" type="button" data-pomodoro-reset>Reset</button>
+                            </div>
+                            <div class="pomodoro-modes">
+                                <button type="button" data-pomodoro-mode="focus">Focus · 25 min</button>
+                                <button type="button" data-pomodoro-mode="break">Break · 5 min</button>
+                            </div>
+                            <p class="pomodoro-note">Rings fire when focus or break blocks finish.</p>
                         </div>
-                        <div class="pomodoro-modes">
-                            <button type="button" data-pomodoro-mode="focus">Focus · 25 min</button>
-                            <button type="button" data-pomodoro-mode="break">Break · 5 min</button>
-                        </div>
-                        <p class="pomodoro-note">Rings fire when focus or break blocks finish.</p>
                     </div>
                     <div class="break-tips-modal" data-break-modal aria-hidden="true">
                         <div class="break-tips-overlay" data-break-modal-overlay></div>

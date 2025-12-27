@@ -319,8 +319,8 @@ function initVibeStage() {
             description: "Bold gradient wallpaper made for quick resets between blocks.",
             image: "images/Background4.jpg",
             overlay: "rgba(6, 4, 12, 0.35)",
-            link: "https://imissmycafe.com/",
-            linkLabel: "Mix a cafe"
+            link: "https://www.youtube.com/watch?v=lTRiuFIWV54",
+            linkLabel: "Ambient lofi mix"
         },
         {
             title: "Background 05 · City glow",
@@ -351,8 +351,8 @@ function initVibeStage() {
             description: "The neon-grid wallpaper you added—lean into the synthy vibe.",
             image: "images/Background8.jpg",
             overlay: "rgba(6, 5, 14, 0.4)",
-            link: "https://imissmycafe.com/",
-            linkLabel: "Mix a cafe"
+            link: "https://www.youtube.com/watch?v=5yx6BWlEVcY",
+            linkLabel: "Jazzhop mix"
         },
         {
             title: "Background 09 · Lunar calm",
@@ -463,6 +463,7 @@ function initPomodoroTimer() {
     const modeButtons = document.querySelectorAll("[data-pomodoro-mode]");
     const timerPanel = document.querySelector("[data-pomodoro-panel]");
     const placementButtons = document.querySelectorAll("[data-timer-placement]");
+    const collapseButton = document.querySelector("[data-timer-collapse]");
     const breakModal = document.querySelector("[data-break-modal]");
     const breakModalOverlay = document.querySelector("[data-break-modal-overlay]");
     const breakModalClose = document.querySelector("[data-break-modal-close]");
@@ -516,10 +517,10 @@ function initPomodoroTimer() {
         {
             icon: "☕",
             label: "Lofi shortcut",
-            title: "Build your cafe vibe",
-            body: "Blend cafe chatter, rain, and lo-fi loops however you like.",
-            link: "https://imissmycafe.com/",
-            linkLabel: "Open the mixer"
+            title: "Cafe lofi stream",
+            body: "Let a mellow coffee shop stream run quietly in the background.",
+            link: "https://www.youtube.com/watch?v=5yx6BWlEVcY",
+            linkLabel: "Play cafe stream"
         }
     ];
 
@@ -755,6 +756,13 @@ function initPomodoroTimer() {
             });
         });
     }
+    collapseButton?.addEventListener("click", () => {
+        if (!timerPanel) return;
+        const nextState = !timerPanel.classList.contains("is-collapsed");
+        timerPanel.classList.toggle("is-collapsed", nextState);
+        collapseButton.textContent = nextState ? "Expand" : "Minimize";
+        collapseButton.setAttribute("aria-pressed", String(nextState));
+    });
 
     updateDisplay();
 }
