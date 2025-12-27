@@ -206,10 +206,17 @@ body[data-theme="light"] .header {
     justify-content: center;
 }
 
-.theme-toggle__icon svg {
-    width: 20px;
-    height: 20px;
-    fill: currentColor;
+.theme-toggle__icon img {
+    width: 22px;
+    height: 22px;
+    display: block;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    transition: filter var(--transition-fast);
+}
+
+body[data-theme="light"] .theme-toggle__icon img {
+    filter: none;
 }
 
 .hero {
