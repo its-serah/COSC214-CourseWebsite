@@ -112,13 +112,19 @@ body[data-theme="light"] .header {
 }
 
 .logo-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 16px;
-    border: 1px solid var(--color-border);
-    box-shadow: var(--shadow-soft);
-    background: var(--color-surface);
-    padding: 8px;
+    width: 56px;
+    height: 56px;
+    border-radius: 999px;
+    border: 2px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    background: transparent;
+    padding: 0;
+    object-fit: cover;
+}
+
+body[data-theme="light"] .logo-icon {
+    border-color: rgba(11, 17, 33, 0.12);
+    box-shadow: 0 15px 30px rgba(15, 23, 42, 0.15);
 }
 
 .logo-copy {
