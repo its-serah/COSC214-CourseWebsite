@@ -500,7 +500,7 @@ body[data-theme="light"] .theme-toggle__icon img {
 }
 
 .chapter-cover--1 {
-    background: url("../images/brightness-and-contrast.png") center/cover no-repeat;
+    background: linear-gradient(140deg, rgba(255, 205, 90, 0.9), rgba(255, 138, 60, 0.7));
 }
 
 .chapter-cover--2 {
