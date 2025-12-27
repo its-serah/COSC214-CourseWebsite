@@ -1520,6 +1520,12 @@ body[data-theme="light"] .timer-collapse {
     box-shadow: var(--shadow-soft);
 }
 
+.roadmap-major-note {
+    margin-top: 12px;
+    font-size: 0.95rem;
+    color: var(--color-text);
+}
+
 .roadmap-steps {
     display: inline-flex;
     flex-wrap: wrap;
