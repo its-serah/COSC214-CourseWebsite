@@ -50,9 +50,10 @@
         </section>
 
         <section class="page-section vibe-stage-section">
-            <div class="container vibe-stage">
+            <div class="container vibe-stage" data-vibe-root>
                 <div class="vibe-stage__viewer" data-vibe-stage tabindex="0">
-                    <div class="vibe-stage__meta">
+                    <button class="stage-fullscreen-btn" type="button" data-vibe-fullscreen aria-pressed="false">Full screen</button>
+                    <div class="vibe-stage__meta sr-only">
                         <p class="stage-eyebrow">Current scene</p>
                         <h2 class="stage-title" data-vibe-label>Background 01 · Dawn loft</h2>
                         <p class="stage-description" data-vibe-description>Warm amber, soft sunrise textures, and calm synth pulses.</p>
@@ -83,27 +84,28 @@
                     <p class="stage-counter" data-vibe-counter>1 / 9</p>
                     <button class="stage-nav-btn" type="button" aria-label="Next scene" data-vibe-next>Next vibe →</button>
                 </div>
-            </div>
-        </section>
-
-        <section class="page-section">
-            <div class="container vibes-layout">
-                <article class="vibes-card">
-                    <h3>Quick rituals</h3>
-                    <ul>
-                        <li>Jot one intention before you tap start.</li>
-                        <li>Stretch, sip water, or breathe on breaks.</li>
-                        <li>Capture one tiny win every block.</li>
-                    </ul>
-                </article>
-                <article class="vibes-card">
-                    <h3>Lofi shortcuts</h3>
-                    <ul class="quick-links">
-                        <li><a href="https://www.youtube.com/watch?v=jfKfPfyJRdk" target="_blank" rel="noopener">24/7 chill beats</a></li>
-                        <li><a href="https://www.youtube.com/watch?v=3jWRrafhO7M" target="_blank" rel="noopener">Rain room</a></li>
-                        <li><a href="https://imissmycafe.com/" target="_blank" rel="noopener">Build your own cafe vibe</a></li>
-                    </ul>
-                </article>
+                <div class="break-tips-modal" data-break-modal aria-hidden="true">
+                    <div class="break-tips-overlay" data-break-modal-overlay></div>
+                    <div class="break-tips-card" role="dialog" aria-modal="true" aria-label="Break ritual ideas">
+                        <button class="break-tips-close" type="button" data-break-modal-close aria-label="Close break tips">×</button>
+                        <div class="break-tips-section">
+                            <h3>Quick rituals</h3>
+                            <ul>
+                                <li>Jot one intention before you tap start.</li>
+                                <li>Stretch, sip water, or breathe on breaks.</li>
+                                <li>Capture one tiny win every block.</li>
+                            </ul>
+                        </div>
+                        <div class="break-tips-section">
+                            <h3>Lofi shortcuts</h3>
+                            <ul>
+                                <li><a href="https://www.youtube.com/watch?v=jfKfPfyJRdk" target="_blank" rel="noopener">24/7 chill beats</a></li>
+                                <li><a href="https://www.youtube.com/watch?v=3jWRrafhO7M" target="_blank" rel="noopener">Rain room</a></li>
+                                <li><a href="https://imissmycafe.com/" target="_blank" rel="noopener">Build your own cafe vibe</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>

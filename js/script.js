@@ -279,12 +279,14 @@ function initVibeStage() {
     const stage = document.querySelector("[data-vibe-stage]");
     if (!stage) return;
 
+    const vibeRoot = stage.closest("[data-vibe-root]");
     const title = document.querySelector("[data-vibe-label]");
     const description = document.querySelector("[data-vibe-description]");
     const link = document.querySelector("[data-vibe-link]");
     const counter = document.querySelector("[data-vibe-counter]");
     const prevButton = document.querySelector("[data-vibe-prev]");
     const nextButton = document.querySelector("[data-vibe-next]");
+    const fullscreenButton = stage.querySelector("[data-vibe-fullscreen]");
 
     const backgrounds = [
         {
@@ -393,12 +395,42 @@ function initVibeStage() {
         applyBackground(backgrounds[index]);
     }
 
+    function isStageFullscreen() {
+        return document.fullscreenElement === stage || document.webkitFullscreenElement === stage;
+    }
+
+    function syncFullscreenState() {
+        const isFullscreen = isStageFullscreen();
+        stage.classList.toggle("is-fullscreen", isFullscreen);
+        vibeRoot?.classList.toggle("is-fullscreen", isFullscreen);
+        if (fullscreenButton) {
+            fullscreenButton.textContent = isFullscreen ? "Exit full screen" : "Full screen";
+            fullscreenButton.setAttribute("aria-pressed", String(isFullscreen));
+        }
+    }
+
+    function requestStageFullscreen() {
+        const request =
+            stage.requestFullscreen ||
+            stage.webkitRequestFullscreen ||
+            stage.msRequestFullscreen;
+        if (!request) return;
+        if (isStageFullscreen()) {
+            (document.exitFullscreen || document.webkitExitFullscreen || document.msExitFullscreen)?.call(document);
+            return;
+        }
+        request.call(stage).catch(() => {});
+    }
+
     if (prevButton) {
         prevButton.addEventListener("click", () => step(-1));
     }
     if (nextButton) {
         nextButton.addEventListener("click", () => step(1));
     }
+    fullscreenButton?.addEventListener("click", requestStageFullscreen);
+    document.addEventListener("fullscreenchange", syncFullscreenState);
+    document.addEventListener("webkitfullscreenchange", syncFullscreenState);
 
     stage.addEventListener("keydown", (event) => {
         if (event.key === "ArrowLeft") {
@@ -411,6 +443,7 @@ function initVibeStage() {
     });
 
     applyBackground(backgrounds[index]);
+    syncFullscreenState();
 }
 
 function initPomodoroTimer() {
@@ -420,6 +453,9 @@ function initPomodoroTimer() {
     const modeButtons = document.querySelectorAll("[data-pomodoro-mode]");
     const timerPanel = document.querySelector("[data-pomodoro-panel]");
     const placementButtons = document.querySelectorAll("[data-timer-placement]");
+    const breakModal = document.querySelector("[data-break-modal]");
+    const breakModalOverlay = document.querySelector("[data-break-modal-overlay]");
+    const breakModalClose = document.querySelector("[data-break-modal-close]");
     if (!display || !startButton || !resetButton) return;
 
     const durations = {
@@ -433,6 +469,31 @@ function initPomodoroTimer() {
     let running = false;
     const AudioContextClass = window.AudioContext || window.webkitAudioContext;
     let audioContext = null;
+    const body = document.body;
+
+    function showBreakModal() {
+        if (!breakModal) return;
+        breakModal.classList.add("is-visible");
+        breakModal.setAttribute("aria-hidden", "false");
+        body.classList.add("break-modal-open");
+        const focusTarget = breakModal.querySelector("a, button");
+        focusTarget?.focus();
+    }
+
+    function hideBreakModal() {
+        if (!breakModal) return;
+        breakModal.classList.remove("is-visible");
+        breakModal.setAttribute("aria-hidden", "true");
+        body.classList.remove("break-modal-open");
+    }
+
+    breakModalOverlay?.addEventListener("click", hideBreakModal);
+    breakModalClose?.addEventListener("click", hideBreakModal);
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && breakModal?.classList.contains("is-visible")) {
+            hideBreakModal();
+        }
+    });
 
     function format(time) {
         const minutes = Math.floor(time / 60)
@@ -517,6 +578,11 @@ function initPomodoroTimer() {
         stopTimer();
         updateDisplay();
         display.classList.remove("pomodoro-finished");
+        if (mode === "break") {
+            showBreakModal();
+        } else {
+            hideBreakModal();
+        }
     }
 
     startButton.addEventListener("click", startTimer);
@@ -525,6 +591,9 @@ function initPomodoroTimer() {
         stopTimer();
         updateDisplay();
         display.classList.remove("pomodoro-finished");
+        if (mode !== "break") {
+            hideBreakModal();
+        }
     });
 
     modeButtons.forEach((button) => {
