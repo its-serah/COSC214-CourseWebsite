@@ -61,6 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initVibeStage();
     initBackToTop();
     initPomodoroTimer();
+    initExercisesGallery();
 });
 
 function initCompilerPlayground() {
@@ -275,6 +276,155 @@ function initRoadmapForm() {
     });
 }
 
+function initExercisesGallery() {
+    const grid = document.querySelector("[data-exercise-grid]");
+    const detail = document.querySelector("[data-exercise-detail]");
+    const filterButtons = document.querySelectorAll("[data-ex-filter]");
+    if (!grid || !detail || !filterButtons.length) return;
+
+    const exercises = [
+        {
+            id: "salaries",
+            title: "Array of Salaries",
+            summary: "Input, report, reverse, and shift a bounded salary list.",
+            tags: ["arrays"],
+            content: `
+                <p>Work with <code>int salaries[100]</code>. Reject sizes greater than 100, then:</p>
+                <ul>
+                    <li>Print salaries with “ – ” separators.</li>
+                    <li>Compute the average and count salaries ≥ average.</li>
+                    <li>Reverse and shift-right the array.</li>
+                </ul>
+                <pre class="exercise-sample">Enter n: 110
+Invalid Size! Try again
+Enter n: 5
+Enter 5 salaries: 4000 3200 5000 2600 1500
+Array of salaries is [4000 – 3200 – 5000 – 2600 – 1500]
+Average of Salaries is 3260
+Count of Employees having a salary greater than or equal to 3260 is 2
+The new array after calling Reverse is [1500 – 2600 – 5000 – 3200 – 4000]
+The new array after calling Shift Right is [4000 – 1500 – 2600 – 5000 – 3200]</pre>
+            `
+        },
+        {
+            id: "random-arrays",
+            title: "Random Arrays of Positive/Negative Values",
+            summary: "Generate values in [min, max] and split into APOS/ANEG.",
+            tags: ["arrays"],
+            content: `
+                <p>Seed <code>srand(time(NULL))</code>, then build arrays APOS and ANEG with strictly positive/negative values.</p>
+                <pre class="exercise-sample">Enter n: 10
+Enter min and max: -10 10
+Array of random values between -10 and 10 is -9 3 5 10 1 4 -4 0 3 4
+Array of strictly positive values is 3 5 10 1 4 3 4
+Array of strictly negative values is -9 -4</pre>
+            `
+        },
+        {
+            id: "string-normalizer",
+            title: "String Normalizer",
+            summary: "Read a full name, trim spaces, flip case, and detect initials.",
+            tags: ["strings"],
+            content: `
+                <p>Use <code>getline</code> to capture a student's full name, then:</p>
+                <ul>
+                    <li>Strip double spaces and trailing whitespace.</li>
+                    <li>Capitalize first letters and lowercase the rest.</li>
+                    <li>Extract initials (e.g., “S.R.”) and report length without spaces.</li>
+                </ul>
+            `
+        },
+        {
+            id: "pointer-clinic",
+            title: "Pointer Clinic",
+            summary: "Practice pointer swaps, address printing, and dynamic arrays.",
+            tags: ["pointers", "arrays"],
+            content: `
+                <p>Write helper functions that swap two ints via pointers, print addresses of array elements, and dynamically allocate an array of size <em>n</em> to compute min/max.</p>
+            `
+        },
+        {
+            id: "struct-roster",
+            title: "Struct Roster & Sorting",
+            summary: "Manage a student struct array, sort, and filter.",
+            tags: ["structs", "arrays"],
+            content: `
+                <p>Create a <code>Student</code> struct with id, name, and GPA:</p>
+                <ul>
+                    <li>Read <em>n</em> students (n ≤ 50).</li>
+                    <li>Sort by GPA descending.</li>
+                    <li>Print honor-roll students (GPA ≥ 3.3).</li>
+                </ul>
+            `
+        },
+        {
+            id: "recursion-basics",
+            title: "Recursion Warmup",
+            summary: "Implement recursive sum, digit count, and palindrome check.",
+            tags: ["recursion", "strings"],
+            content: `
+                <p>Write three recursive functions:</p>
+                <ul>
+                    <li><code>sumDigits(int n)</code></li>
+                    <li><code>countOccurrences(string s, char ch)</code></li>
+                    <li><code>isPalindrome(string s, int left, int right)</code></li>
+                </ul>
+            `
+        },
+        {
+            id: "stack-simulator",
+            title: "Stack Simulator",
+            summary: "Simulate push/pop operations with validation.",
+            tags: ["arrays"],
+            content: `
+                <p>Use a fixed-size array to simulate stack pushes/pops from a command list, printing errors when operations are invalid and reporting the top element after each command.</p>
+            `
+        }
+    ];
+
+    let activeFilter = "all";
+
+    function renderCards() {
+        const fragment = document.createDocumentFragment();
+        exercises
+            .filter((exercise) => activeFilter === "all" || exercise.tags.includes(activeFilter))
+            .forEach((exercise) => {
+                const card = document.createElement("button");
+                card.type = "button";
+                card.className = "exercise-card-preview";
+                card.dataset.exerciseId = exercise.id;
+                card.innerHTML = `
+                    <span class="exercise-tag">${exercise.tags.join(" · ")}</span>
+                    <h4>${exercise.title}</h4>
+                    <p>${exercise.summary}</p>
+                `;
+                card.addEventListener("click", () => showDetail(exercise.id));
+                fragment.appendChild(card);
+            });
+        grid.innerHTML = "";
+        grid.appendChild(fragment);
+    }
+
+    function showDetail(exerciseId) {
+        const exercise = exercises.find((item) => item.id === exerciseId);
+        if (!exercise) return;
+        detail.innerHTML = `
+            <h3>${exercise.title}</h3>
+            ${exercise.content}
+        `;
+        detail.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            activeFilter = button.dataset.exFilter || "all";
+            filterButtons.forEach((btn) => btn.classList.toggle("is-active", btn === button));
+            renderCards();
+        });
+    });
+
+    renderCards();
+}
 function initVibeStage() {
     const stage = document.querySelector("[data-vibe-stage]");
     if (!stage) return;
