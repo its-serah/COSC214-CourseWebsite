@@ -83,6 +83,53 @@
                 </div>
             </div>
         </section>
+
+        <section class="page-section">
+            <div class="container exercise-details">
+                <article class="exercise-card">
+                    <span class="eyebrow">Exercise 1</span>
+                    <h3>Array of Salaries</h3>
+                    <p>Work with an <strong>int salaries[100]</strong> array and build helper functions to:</p>
+                    <ul>
+                        <li>Read <em>n</em> salaries (reject sizes &gt; 100).</li>
+                        <li>Print salaries on one line separated by “-”.</li>
+                        <li>Compute the average salary and count how many are ≥ average.</li>
+                        <li>Reverse the array in-place.</li>
+                        <li>Shift the array right by one position.</li>
+                    </ul>
+                    <p class="section-intro">Sample interaction:</p>
+                    <pre class="exercise-sample">Enter n: 110
+Invalid Size! Try again
+Enter n: 5
+Enter 5 salaries: 4000 3200 5000 2600 1500
+Array of salaries is [4000 – 3200 – 5000 – 2600 – 1500]
+Average of Salaries is 3260
+Count of Employees having a salary greater than or equal to 3260 is 2
+The new array after calling Reverse is [1500 – 2600 – 5000 – 3200 – 4000]
+The new array after calling Shift Right is [4000 – 1500 – 2600 – 5000 – 3200]</pre>
+                </article>
+
+                <article class="exercise-card">
+                    <span class="eyebrow">Exercise 2</span>
+                    <h3>Random Arrays of Positive and Negative Values</h3>
+                    <p>Generate <strong>n</strong> random integers between <strong>min</strong> and <strong>max</strong> inclusive, then copy strictly positive values to <code>APOS</code> and strictly negative values to <code>ANEG</code>.</p>
+                    <p>Tips:</p>
+                    <ul>
+                        <li>Seed the RNG with <code>srand(time(NULL))</code>.</li>
+                        <li>Use <code>r = min + rand() % (max - min + 1);</code> for each element.</li>
+                        <li>Display both arrays for verification (ignore zeros).</li>
+                    </ul>
+                    <p class="section-intro">Sample interaction:</p>
+                    <pre class="exercise-sample">Enter n: 110
+Invalid Size! Try again
+Enter n: 10
+Enter min and max: -10 10
+Array of random values between -10 and 10 is -9 3 5 10 1 4 -4 0 3 4
+Array of strictly positive values is 3 5 10 1 4 3 4
+Array of strictly negative values is -9 -4</pre>
+                </article>
+            </div>
+        </section>
     </main>
     <footer class="footer" id="contact">
         <div class="container">
