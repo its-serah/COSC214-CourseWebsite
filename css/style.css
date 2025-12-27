@@ -422,6 +422,100 @@ body[data-theme="light"] .header {
     gap: 24px;
 }
 
+.chapter-cover-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-bottom: 26px;
+}
+
+.chapter-cover {
+    position: relative;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    padding: 22px;
+    min-height: 240px;
+    color: var(--color-base);
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: radial-gradient(circle at top, rgba(255, 255, 255, 0.08), transparent);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: transform var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.chapter-cover::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(145deg, rgba(0, 0, 0, 0.55), transparent 70%);
+    pointer-events: none;
+}
+
+.chapter-cover h3,
+.chapter-cover p,
+.chapter-cover span {
+    position: relative;
+    z-index: 1;
+}
+
+.chapter-cover__label {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    opacity: 0.9;
+}
+
+.chapter-cover h3 {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
+}
+
+.chapter-cover__meta {
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    flex-grow: 1;
+}
+
+.chapter-cover__cta {
+    font-weight: 600;
+    color: var(--color-highlight);
+    margin-top: auto;
+}
+
+.chapter-cover:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-accent);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+.chapter-cover--1 {
+    background: url("../images/brightness-and-contrast.png") center/cover no-repeat;
+}
+
+.chapter-cover--2 {
+    background: linear-gradient(140deg, rgba(111, 78, 255, 0.9), rgba(32, 214, 255, 0.7));
+}
+
+.chapter-cover--3 {
+    background: linear-gradient(140deg, rgba(255, 121, 85, 0.95), rgba(255, 189, 90, 0.7));
+}
+
+.chapter-cover--4 {
+    background: linear-gradient(140deg, rgba(60, 222, 176, 0.9), rgba(74, 119, 255, 0.7));
+}
+
+.chapter-cover--5 {
+    background: linear-gradient(140deg, rgba(255, 105, 180, 0.85), rgba(148, 87, 255, 0.75));
+}
+
+.chapter-cover--6 {
+    background: linear-gradient(140deg, rgba(93, 53, 190, 0.9), rgba(0, 180, 216, 0.75));
+}
+
 .chapter-card,
 .learning-card,
 .problem-card {
