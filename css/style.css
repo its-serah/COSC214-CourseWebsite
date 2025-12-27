@@ -370,6 +370,13 @@ body[data-theme="light"] .theme-toggle__icon img {
     color: var(--color-muted);
 }
 
+.panel-note {
+    margin-top: -6px;
+    margin-bottom: 18px;
+    color: var(--color-muted);
+    font-size: 0.95rem;
+}
+
 .panel-cta {
     font-weight: 600;
     color: var(--color-highlight);
