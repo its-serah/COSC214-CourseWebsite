@@ -286,6 +286,7 @@ function initVibeStage() {
     const counter = document.querySelector("[data-vibe-counter]");
     const prevButton = document.querySelector("[data-vibe-prev]");
     const nextButton = document.querySelector("[data-vibe-next]");
+    const playLink = document.querySelector("[data-vibe-play]");
     const fullscreenButton = stage.querySelector("[data-vibe-fullscreen]");
 
     const backgrounds = [
@@ -383,6 +384,15 @@ function initVibeStage() {
                 link.hidden = false;
             } else {
                 link.hidden = true;
+            }
+        }
+        if (playLink) {
+            if (item.link) {
+                playLink.href = item.link;
+                playLink.textContent = item.linkLabel || "Play this vibe";
+                playLink.hidden = false;
+            } else {
+                playLink.hidden = true;
             }
         }
         if (counter) {
@@ -667,6 +677,12 @@ function initPomodoroTimer() {
         }
 
         ensureAudioContext();
+        if (mode === "focus") {
+            if (!queuedBreakTip) {
+                queueBreakTip();
+            }
+            openBreakModal({ autoplay: true });
+        }
         running = true;
         startButton.textContent = "Pause";
         timerId = setInterval(() => {
