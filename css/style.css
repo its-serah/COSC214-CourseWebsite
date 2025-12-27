@@ -865,6 +865,22 @@ body[data-theme="light"] .header {
     color: var(--color-muted);
 }
 
+.back-to-top {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    color: var(--color-accent);
+    font-weight: 600;
+}
+
+.back-to-top svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
 .footer a {
     color: var(--color-accent);
     font-weight: 600;
