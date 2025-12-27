@@ -45,64 +45,66 @@
         <section class="page-hero vibes-hero">
             <div class="container">
                 <p class="eyebrow">Study Vibes Station</p>
-                <h1>Set the mood, breathe, and let COSC214 feel cozy.</h1>
-                <p class="page-lead">Pick a background, queue some lofi, and run short Pomodoro bursts so practice never feels stale.</p>
+                <h1>Keep the focus cozy and light.</h1>
+                <p class="page-lead">Pick a scene, move the timer where you like, and let the session flow.</p>
+            </div>
+        </section>
+
+        <section class="page-section vibe-stage-section">
+            <div class="container vibe-stage">
+                <div class="vibe-stage__viewer" data-vibe-stage tabindex="0">
+                    <div class="vibe-stage__meta">
+                        <p class="stage-eyebrow">Current scene</p>
+                        <h2 class="stage-title" data-vibe-label>Sunrise loft</h2>
+                        <p class="stage-description" data-vibe-description>Soft oranges and gentle synths keep mornings calm.</p>
+                        <a class="stage-link" data-vibe-link href="https://www.youtube.com/watch?v=jfKfPfyJRdk" target="_blank" rel="noopener">Open playlist</a>
+                    </div>
+                    <div class="pomodoro-floating" aria-label="Pomodoro timer" data-pomodoro-panel data-placement="corner">
+                        <div class="pomodoro-header">
+                            <h3>Timer</h3>
+                            <div class="timer-placement">
+                                <button type="button" class="is-active" data-timer-placement="corner">Corner</button>
+                                <button type="button" data-timer-placement="center">Center</button>
+                            </div>
+                        </div>
+                        <div class="pomodoro-display" data-pomodoro-display>25:00</div>
+                        <div class="pomodoro-controls">
+                            <button class="btn btn-primary" type="button" data-pomodoro-start>Start session</button>
+                            <button class="btn btn-secondary" type="button" data-pomodoro-reset>Reset</button>
+                        </div>
+                        <div class="pomodoro-modes">
+                            <button type="button" data-pomodoro-mode="focus">Focus · 25 min</button>
+                            <button type="button" data-pomodoro-mode="break">Break · 5 min</button>
+                        </div>
+                        <p class="pomodoro-note">Rings fire when focus or break blocks finish.</p>
+                    </div>
+                </div>
+                <div class="vibe-stage__nav">
+                    <button class="stage-nav-btn" type="button" aria-label="Previous scene" data-vibe-prev>← Prev vibe</button>
+                    <p class="stage-counter" data-vibe-counter>1 / 4</p>
+                    <button class="stage-nav-btn" type="button" aria-label="Next scene" data-vibe-next>Next vibe →</button>
+                </div>
             </div>
         </section>
 
         <section class="page-section">
             <div class="container vibes-layout">
                 <article class="vibes-card">
-                    <h3>Curated lofi rituals</h3>
-                    <p>Use the suggestions below as a launchpad—open your favorite YouTube lofi mix, set the wallpaper to something calming, and note how your energy feels before and after each block.</p>
+                    <h3>Quick rituals</h3>
                     <ul>
-                        <li>Try alternating 25-minute focused sessions with 5-minute resets.</li>
-                        <li>Use the “Background Stations” grid to open ambient sound videos or animated loops.</li>
-                        <li>Write one intention for the next block directly on paper or in your notes app.</li>
+                        <li>Jot one intention before you tap start.</li>
+                        <li>Stretch, sip water, or breathe on breaks.</li>
+                        <li>Capture one tiny win every block.</li>
                     </ul>
                 </article>
-                <article class="pomodoro-card" aria-label="Pomodoro timer">
-                    <h3>Pomodoro timer</h3>
-                    <p>Use this built-in timer to keep yourself honest. Switch between focus and break modes anytime.</p>
-                    <div class="pomodoro-display" data-pomodoro-display>25:00</div>
-                    <div class="pomodoro-controls">
-                        <button class="btn btn-primary" type="button" data-pomodoro-start>Start session</button>
-                        <button class="btn btn-secondary" type="button" data-pomodoro-reset>Reset</button>
-                    </div>
-                    <div class="pomodoro-modes">
-                        <button type="button" data-pomodoro-mode="focus">Focus · 25 min</button>
-                        <button type="button" data-pomodoro-mode="break">Break · 5 min</button>
-                    </div>
-                    <p class="pomodoro-note">Tip: jot down what you accomplished after each focus round to see consistent wins.</p>
+                <article class="vibes-card">
+                    <h3>Lofi shortcuts</h3>
+                    <ul class="quick-links">
+                        <li><a href="https://www.youtube.com/watch?v=jfKfPfyJRdk" target="_blank" rel="noopener">24/7 chill beats</a></li>
+                        <li><a href="https://www.youtube.com/watch?v=3jWRrafhO7M" target="_blank" rel="noopener">Rain room</a></li>
+                        <li><a href="https://imissmycafe.com/" target="_blank" rel="noopener">Build your own cafe vibe</a></li>
+                    </ul>
                 </article>
-            </div>
-        </section>
-
-        <section class="page-section vibes-backgrounds">
-            <div class="container">
-                <div class="section-header">
-                    <p class="eyebrow">Background Stations</p>
-                    <h2>Open a vibe that matches your current energy.</h2>
-                    <p class="section-intro">These are external links so you can pop them in another tab or monitor. Mix and match with your own favorites.</p>
-                </div>
-                <div class="background-grid">
-                    <a class="background-card" href="https://www.youtube.com/watch?v=jfKfPfyJRdk" target="_blank" rel="noopener">
-                        <span class="background-label">lofi chill beats</span>
-                        <p>“lofi hip hop radio – beats to relax/study to”</p>
-                    </a>
-                    <a class="background-card" href="https://www.youtube.com/watch?v=3jWRrafhO7M" target="_blank" rel="noopener">
-                        <span class="background-label">ambient rain</span>
-                        <p>Soothing rain ambience for gentle focus.</p>
-                    </a>
-                    <a class="background-card" href="https://www.youtube.com/watch?v=DWcJFNfaw9c" target="_blank" rel="noopener">
-                        <span class="background-label">cafe vibes</span>
-                        <p>Quiet coffee shop ambience with soft music.</p>
-                    </a>
-                    <a class="background-card" href="https://imissmycafe.com/" target="_blank" rel="noopener">
-                        <span class="background-label">mix your own</span>
-                        <p>“I Miss My Cafe” lets you blend cafe + rain + lo-fi loops.</p>
-                    </a>
-                </div>
             </div>
         </section>
     </main>
