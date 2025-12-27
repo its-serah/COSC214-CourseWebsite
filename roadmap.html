@@ -41,55 +41,80 @@
     </header>
 
     <main id="main">
-        <section class="page-hero">
+        <section class="roadmap-section">
             <div class="container">
-                <p class="eyebrow">Tailored Roadmap</p>
-                <h1>Answer a few prompts, get a precise study sprint.</h1>
-                <p class="page-lead">Your responses stay local—use them to recalibrate after each study block and keep moving with purpose.</p>
-            </div>
-        </section>
+                <div class="roadmap-hero">
+                    <div class="roadmap-hero-copy">
+                        <p class="eyebrow">Tailored Roadmap</p>
+                        <h1>Answer a few prompts, get a precise study sprint.</h1>
+                        <p class="page-lead">Your responses stay local—use them to recalibrate after every block and keep your sessions intentional.</p>
+                    </div>
+                    <div class="roadmap-steps">
+                        <span class="roadmap-chip">1 · Reflect</span>
+                        <span class="roadmap-chip">2 · Generate</span>
+                        <span class="roadmap-chip">3 · Act</span>
+                    </div>
+                </div>
 
-        <section class="page-section">
-            <div class="container page-layout">
-                <form class="roadmap-form" data-roadmap-form>
-                    <label>
-                        Confidence with the latest lecture
-                        <select name="confidence" required>
-                            <option value="high">Feeling confident</option>
-                            <option value="medium" selected>Steady but needs review</option>
-                            <option value="low">Need to rebuild understanding</option>
-                        </select>
-                    </label>
-                    <label>
-                        Debugging mindset right now
-                        <select name="debugging" required>
-                            <option value="calm" selected>Confident in tracing errors</option>
-                            <option value="uncertain">Somewhat unsure</option>
-                            <option value="stuck">Feeling stuck when bugs appear</option>
-                        </select>
-                    </label>
-                    <label>
-                        Time available before the next class (minutes)
-                        <input type="number" name="time" min="15" max="240" step="5" value="60" required>
-                    </label>
-                    <label>
-                        Focus for this session
-                        <select name="goal" required>
-                            <option value="review" selected>Reinforce fundamentals</option>
-                            <option value="push">Advance to harder material</option>
-                            <option value="interview">Interview-style practice</option>
-                        </select>
-                    </label>
-                    <label>
-                        Topic or pain point (optional)
-                        <textarea name="topic" placeholder="e.g. pointers vs references, nested loops, debugging segmentation faults"></textarea>
-                    </label>
-                    <button class="btn btn-primary" type="submit">Generate my roadmap</button>
-                </form>
+                <div class="roadmap-grid">
+                    <form class="roadmap-form" data-roadmap-form>
+                        <label class="roadmap-field">
+                            <span class="field-title">Confidence with the latest lecture</span>
+                            <span class="field-hint">Choose the option that best sums up your current grasp.</span>
+                            <select name="confidence" required>
+                                <option value="high">Feeling confident</option>
+                                <option value="medium" selected>Steady but needs review</option>
+                                <option value="low">Need to rebuild understanding</option>
+                            </select>
+                        </label>
+                        <label class="roadmap-field">
+                            <span class="field-title">Debugging mindset right now</span>
+                            <span class="field-hint">How do you feel when compiler errors pop up?</span>
+                            <select name="debugging" required>
+                                <option value="calm" selected>Confident in tracing errors</option>
+                                <option value="uncertain">Somewhat unsure</option>
+                                <option value="stuck">Feeling stuck when bugs appear</option>
+                            </select>
+                        </label>
+                        <label class="roadmap-field">
+                            <span class="field-title">Time available before the next class (minutes)</span>
+                            <span class="field-hint">Stick to honest windows so the plan feels doable.</span>
+                            <input type="number" name="time" min="15" max="240" step="5" value="60" required>
+                        </label>
+                        <label class="roadmap-field">
+                            <span class="field-title">Focus for this session</span>
+                            <span class="field-hint">Pick the vibe you want for this sprint.</span>
+                            <select name="goal" required>
+                                <option value="review" selected>Reinforce fundamentals</option>
+                                <option value="push">Advance to harder material</option>
+                                <option value="interview">Interview-style practice</option>
+                            </select>
+                        </label>
+                        <label class="roadmap-field">
+                            <span class="field-title">Topic or pain point (optional)</span>
+                            <span class="field-hint">Share a concept, bug, or anything you want extra attention on.</span>
+                            <textarea name="topic" placeholder="e.g. pointers vs references, nested loops, debugging segmentation faults"></textarea>
+                        </label>
+                        <button class="btn btn-primary roadmap-submit" type="submit">Generate my roadmap</button>
+                        <p class="form-note">Nothing is stored—rerun the form after every block to keep adapting.</p>
+                    </form>
 
-                <div class="roadmap-results" data-roadmap-result>
-                    <h3>Your personalized sprint will appear here.</h3>
-                    <p>Submit the form to see suggested chapters, exercises, and problem sets tailored to your answers.</p>
+                    <div class="roadmap-aside">
+                        <article class="roadmap-highlights">
+                            <h3>Session cues</h3>
+                            <p>Use these as gentle reminders while you answer the prompts.</p>
+                            <ul class="roadmap-pills">
+                                <li>👣 25–60 min bursts work best.</li>
+                                <li>📝 Jot a win after each round.</li>
+                                <li>🧘‍♀️ Swap to a break vibe immediately.</li>
+                                <li>📬 Share blockers so we can adjust chapters.</li>
+                            </ul>
+                        </article>
+                        <div class="roadmap-results" data-roadmap-result>
+                            <h3>Your personalized sprint will appear here.</h3>
+                            <p>Submit the form to see suggested chapters, exercises, and problem sets tailored to your answers.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
