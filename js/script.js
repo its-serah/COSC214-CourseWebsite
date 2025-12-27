@@ -456,12 +456,62 @@ function initPomodoroTimer() {
     const breakModal = document.querySelector("[data-break-modal]");
     const breakModalOverlay = document.querySelector("[data-break-modal-overlay]");
     const breakModalClose = document.querySelector("[data-break-modal-close]");
+    const breakTipTrigger = document.querySelector("[data-break-tip-trigger]");
+    const breakTipIcon = document.querySelector("[data-break-tip-icon]");
+    const breakTipLabel = document.querySelector("[data-break-tip-label]");
+    const breakTipTitle = document.querySelector("[data-break-tip-title]");
+    const breakTipBody = document.querySelector("[data-break-tip-body]");
+    const breakTipLink = document.querySelector("[data-break-tip-link]");
     if (!display || !startButton || !resetButton) return;
 
     const durations = {
         focus: 25 * 60,
         break: 5 * 60
     };
+    const breakTips = [
+        {
+            icon: "📝",
+            label: "Quick ritual",
+            title: "Set an intention",
+            body: "Jot one intention before you tap start."
+        },
+        {
+            icon: "💧",
+            label: "Quick ritual",
+            title: "Reset your body",
+            body: "Stretch, sip water, or breathe on breaks."
+        },
+        {
+            icon: "✨",
+            label: "Quick ritual",
+            title: "Celebrate a win",
+            body: "Capture one tiny win every block to keep momentum."
+        },
+        {
+            icon: "🎧",
+            label: "Lofi shortcut",
+            title: "24/7 chill beats",
+            body: "Drop into the always-on stream for cozy focus.",
+            link: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
+            linkLabel: "Open 24/7 chill beats"
+        },
+        {
+            icon: "🌧",
+            label: "Lofi shortcut",
+            title: "Rain room",
+            body: "Switch to the rain ambience when you need softer vibes.",
+            link: "https://www.youtube.com/watch?v=3jWRrafhO7M",
+            linkLabel: "Open rain room"
+        },
+        {
+            icon: "☕",
+            label: "Lofi shortcut",
+            title: "Build your cafe vibe",
+            body: "Blend cafe chatter, rain, and lo-fi loops however you like.",
+            link: "https://imissmycafe.com/",
+            linkLabel: "Open the mixer"
+        }
+    ];
 
     let mode = "focus";
     let remaining = durations[mode];
@@ -470,30 +520,75 @@ function initPomodoroTimer() {
     const AudioContextClass = window.AudioContext || window.webkitAudioContext;
     let audioContext = null;
     const body = document.body;
+    let nextBreakTipIndex = 0;
+    let queuedBreakTip = null;
 
-    function showBreakModal() {
-        if (!breakModal) return;
+    function queueBreakTip() {
+        if (!breakTips.length || !breakTipTrigger) return;
+        queuedBreakTip = breakTips[nextBreakTipIndex];
+        nextBreakTipIndex = (nextBreakTipIndex + 1) % breakTips.length;
+        breakTipTrigger.hidden = false;
+        breakTipTrigger.setAttribute(
+            "aria-label",
+            `Open break tip: ${queuedBreakTip.title}`
+        );
+        if (breakTipIcon) {
+            breakTipIcon.textContent = queuedBreakTip.icon || "★";
+        }
+    }
+
+    function clearBreakTip() {
+        queuedBreakTip = null;
+        if (breakTipTrigger) {
+            breakTipTrigger.hidden = true;
+        }
+    }
+
+    function openBreakModal() {
+        if (!breakModal || !queuedBreakTip) return;
+        if (breakTipLabel) {
+            breakTipLabel.textContent = queuedBreakTip.label || "Break tip";
+        }
+        if (breakTipTitle) {
+            breakTipTitle.textContent = queuedBreakTip.title || "Break reminder";
+        }
+        if (breakTipBody) {
+            breakTipBody.textContent = queuedBreakTip.body || "";
+        }
+        if (breakTipLink) {
+            if (queuedBreakTip.link) {
+                breakTipLink.href = queuedBreakTip.link;
+                breakTipLink.textContent =
+                    queuedBreakTip.linkLabel || "Open link";
+                breakTipLink.hidden = false;
+            } else {
+                breakTipLink.hidden = true;
+            }
+        }
         breakModal.classList.add("is-visible");
         breakModal.setAttribute("aria-hidden", "false");
         body.classList.add("break-modal-open");
-        const focusTarget = breakModal.querySelector("a, button");
+        const focusTarget = !breakTipLink?.hidden
+            ? breakTipLink
+            : breakModalClose || breakModal.querySelector("button");
         focusTarget?.focus();
     }
 
-    function hideBreakModal() {
+    function closeBreakModal() {
         if (!breakModal) return;
         breakModal.classList.remove("is-visible");
         breakModal.setAttribute("aria-hidden", "true");
         body.classList.remove("break-modal-open");
     }
 
-    breakModalOverlay?.addEventListener("click", hideBreakModal);
-    breakModalClose?.addEventListener("click", hideBreakModal);
+    breakModalOverlay?.addEventListener("click", closeBreakModal);
+    breakModalClose?.addEventListener("click", closeBreakModal);
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && breakModal?.classList.contains("is-visible")) {
-            hideBreakModal();
+            closeBreakModal();
         }
     });
+    breakTipTrigger?.addEventListener("click", openBreakModal);
 
     function format(time) {
         const minutes = Math.floor(time / 60)
@@ -579,9 +674,11 @@ function initPomodoroTimer() {
         updateDisplay();
         display.classList.remove("pomodoro-finished");
         if (mode === "break") {
-            showBreakModal();
+            closeBreakModal();
+            queueBreakTip();
         } else {
-            hideBreakModal();
+            clearBreakTip();
+            closeBreakModal();
         }
     }
 
@@ -592,7 +689,8 @@ function initPomodoroTimer() {
         updateDisplay();
         display.classList.remove("pomodoro-finished");
         if (mode !== "break") {
-            hideBreakModal();
+            clearBreakTip();
+            closeBreakModal();
         }
     });
 

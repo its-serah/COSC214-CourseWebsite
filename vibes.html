@@ -59,6 +59,9 @@
                         <p class="stage-description" data-vibe-description>Warm amber, soft sunrise textures, and calm synth pulses.</p>
                         <a class="stage-link" data-vibe-link href="https://www.youtube.com/watch?v=jfKfPfyJRdk" target="_blank" rel="noopener">Play lofi mix</a>
                     </div>
+                    <button class="break-tip-badge" type="button" data-break-tip-trigger aria-label="Open break tip" hidden>
+                        <span class="break-tip-badge__icon" data-break-tip-icon>★</span>
+                    </button>
                     <div class="pomodoro-floating" aria-label="Pomodoro timer" data-pomodoro-panel data-placement="corner">
                         <div class="pomodoro-header">
                             <h3>Timer</h3>
@@ -86,23 +89,13 @@
                 </div>
                 <div class="break-tips-modal" data-break-modal aria-hidden="true">
                     <div class="break-tips-overlay" data-break-modal-overlay></div>
-                    <div class="break-tips-card" role="dialog" aria-modal="true" aria-label="Break ritual ideas">
-                        <button class="break-tips-close" type="button" data-break-modal-close aria-label="Close break tips">×</button>
-                        <div class="break-tips-section">
-                            <h3>Quick rituals</h3>
-                            <ul>
-                                <li>Jot one intention before you tap start.</li>
-                                <li>Stretch, sip water, or breathe on breaks.</li>
-                                <li>Capture one tiny win every block.</li>
-                            </ul>
-                        </div>
-                        <div class="break-tips-section">
-                            <h3>Lofi shortcuts</h3>
-                            <ul>
-                                <li><a href="https://www.youtube.com/watch?v=jfKfPfyJRdk" target="_blank" rel="noopener">24/7 chill beats</a></li>
-                                <li><a href="https://www.youtube.com/watch?v=3jWRrafhO7M" target="_blank" rel="noopener">Rain room</a></li>
-                                <li><a href="https://imissmycafe.com/" target="_blank" rel="noopener">Build your own cafe vibe</a></li>
-                            </ul>
+                    <div class="break-tips-card" role="dialog" aria-modal="true" aria-label="Break ritual idea">
+                        <button class="break-tips-close" type="button" data-break-modal-close aria-label="Close break tip">×</button>
+                        <div class="break-tip-content">
+                            <p class="break-tip-label" data-break-tip-label>Quick ritual</p>
+                            <h3 data-break-tip-title>Break reminder</h3>
+                            <p class="break-tip-body" data-break-tip-body>Tap the icon next break to see a new tip.</p>
+                            <a class="break-tip-link" data-break-tip-link href="#" target="_blank" rel="noopener" hidden>Open link</a>
                         </div>
                     </div>
                 </div>
