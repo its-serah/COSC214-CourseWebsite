@@ -122,7 +122,9 @@ int main() {
             return;
         }
 
-        stdinEditor.value = "";
+        if (stdinEditor) {
+            stdinEditor.value = "";
+        }
         setStatus("Template loaded. Ready to compile.");
         outputField.textContent = "Your stdout and compiler logs will appear here.";
     }
@@ -153,7 +155,7 @@ int main() {
                 },
                 body: JSON.stringify({
                     code: source,
-                    stdin: stdinEditor.value,
+                    stdin: stdinEditor ? stdinEditor.value : "",
                     compiler: "gcc-head",
                     options: "warning,gnu++17",
                     save: false

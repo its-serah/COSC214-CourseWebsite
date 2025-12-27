@@ -710,6 +710,21 @@ body[data-theme="light"] .theme-toggle__icon img {
     margin-bottom: 10px;
 }
 
+.compiler-page .compiler-main {
+    min-height: calc(100vh - 200px);
+    padding: clamp(40px, 6vh, 80px) 0;
+    display: flex;
+    align-items: center;
+}
+
+.compiler-main__inner {
+    width: min(1280px, 96vw);
+}
+
+.compiler-page .compiler-main__inner {
+    width: min(1320px, 96vw);
+}
+
 .compiler-shell {
     margin-top: 48px;
     border-radius: var(--radius-lg);
@@ -722,11 +737,36 @@ body[data-theme="light"] .theme-toggle__icon img {
     gap: 16px;
 }
 
+.compiler-page .compiler-shell {
+    margin-top: 0;
+    width: 100%;
+    min-height: clamp(540px, 75vh, 840px);
+}
+
+@media (max-width: 900px) {
+    .compiler-page .compiler-main {
+        align-items: flex-start;
+        padding: 32px 0 56px;
+    }
+}
+
 .compiler-header {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
+}
+
+.compiler-header .eyebrow {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--color-highlight);
+}
+
+.compiler-header h1 {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    margin-bottom: 12px;
 }
 
 .compiler-header h3 {
@@ -737,6 +777,10 @@ body[data-theme="light"] .theme-toggle__icon img {
 .compiler-header p {
     color: var(--color-muted);
     max-width: 520px;
+}
+
+.compiler-page .compiler-header p {
+    max-width: 640px;
 }
 
 .compiler-template {
@@ -762,13 +806,7 @@ body[data-theme="light"] .theme-toggle__icon img {
     gap: 8px;
 }
 
-.editor-label span {
-    font-weight: 400;
-    color: var(--color-muted);
-}
-
-.code-editor,
-.stdin-editor {
+.code-editor {
     width: 100%;
     background: rgba(0, 0, 0, 0.25);
     color: var(--color-text);
@@ -780,11 +818,7 @@ body[data-theme="light"] .theme-toggle__icon img {
 }
 
 .code-editor {
-    min-height: 220px;
-}
-
-.stdin-editor {
-    min-height: 100px;
+    min-height: 300px;
 }
 
 .compiler-controls {
