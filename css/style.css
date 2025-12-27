@@ -477,7 +477,6 @@ body[data-theme="light"] .theme-toggle__icon img {
 }
 
 .chapter-grid,
-.learning-grid,
 .problem-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

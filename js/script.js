@@ -361,7 +361,7 @@ Array of strictly negative values is -9 -4</pre>
             id: "recursion-basics",
             title: "Recursion Warmup",
             summary: "Implement recursive sum, digit count, and palindrome check.",
-            tags: ["recursion", "strings"],
+            tags: ["strings"],
             content: `
                 <p>Write three recursive functions:</p>
                 <ul>
