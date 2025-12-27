@@ -544,7 +544,7 @@ function initPomodoroTimer() {
         }
     }
 
-    function openBreakModal() {
+    function openBreakModal({ autoplay = false } = {}) {
         if (!breakModal || !queuedBreakTip) return;
         if (breakTipLabel) {
             breakTipLabel.textContent = queuedBreakTip.label || "Break tip";
@@ -572,6 +572,7 @@ function initPomodoroTimer() {
             ? breakTipLink
             : breakModalClose || breakModal.querySelector("button");
         focusTarget?.focus();
+        playTipSound();
     }
 
     function closeBreakModal() {
@@ -588,7 +589,7 @@ function initPomodoroTimer() {
             closeBreakModal();
         }
     });
-    breakTipTrigger?.addEventListener("click", openBreakModal);
+    breakTipTrigger?.addEventListener("click", () => openBreakModal({ autoplay: false }));
 
     function format(time) {
         const minutes = Math.floor(time / 60)
@@ -634,6 +635,22 @@ function initPomodoroTimer() {
         });
     }
 
+    function playTipSound() {
+        const ctx = ensureAudioContext();
+        if (!ctx) return;
+        const oscillator = ctx.createOscillator();
+        const gain = ctx.createGain();
+        oscillator.type = "triangle";
+        oscillator.frequency.value = 720;
+        const now = ctx.currentTime;
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(0.35, now + 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+        oscillator.connect(gain).connect(ctx.destination);
+        oscillator.start(now);
+        oscillator.stop(now + 0.45);
+    }
+
     function stopTimer() {
         if (timerId) {
             clearInterval(timerId);
@@ -674,8 +691,8 @@ function initPomodoroTimer() {
         updateDisplay();
         display.classList.remove("pomodoro-finished");
         if (mode === "break") {
-            closeBreakModal();
             queueBreakTip();
+            openBreakModal({ autoplay: true });
         } else {
             clearBreakTip();
             closeBreakModal();
@@ -691,6 +708,11 @@ function initPomodoroTimer() {
         if (mode !== "break") {
             clearBreakTip();
             closeBreakModal();
+        } else {
+            closeBreakModal();
+            if (!queuedBreakTip) {
+                queueBreakTip();
+            }
         }
     });
 
