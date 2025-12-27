@@ -1374,8 +1374,8 @@ body[data-theme="light"] .testimonial-card {
     height: 48px;
     border-radius: 50%;
     border: 1px solid rgba(255, 255, 255, 0.18);
-    background: radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.18), rgba(5, 7, 16, 0.92));
-    color: #fdfdfd;
+    background: linear-gradient(135deg, var(--color-accent), var(--color-accent-strong));
+    color: #0b1120;
     display: inline-flex;
     align-items: center;
     justify-content: center;
