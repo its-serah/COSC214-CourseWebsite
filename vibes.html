@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COSC214 Companion · its-serah</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="images/browsericon.png">
+</head>
+<body data-theme="dark">
+    <a class="skip-link" href="#main">Skip directly to the vibe station.</a>
+    <header class="header">
+        <div class="container header__inner">
+            <a class="logo" href="index.html#home">
+                <img src="images/browsericon.png" alt="COSC214 icon" class="logo-icon">
+                <div class="logo-copy">
+                    <span class="logo-eyebrow">COSC214</span>
+                    <span class="logo-title">Learning Companion</span>
+                </div>
+            </a>
+            <nav class="navbar" id="siteNav" aria-label="Primary">
+                <ul class="nav-links">
+                    <li><a class="nav-link" href="index.html#home">Overview</a></li>
+                    <li><a class="nav-link" href="chapters.html">Chapters</a></li>
+                    <li><a class="nav-link" href="exercises.html">Exercises</a></li>
+                    <li><a class="nav-link" href="roadmap.html">Roadmap</a></li>
+                    <li><a class="nav-link" href="compiler.html">Compiler</a></li>
+                    <li><a class="nav-link" href="vibes.html">Vibes</a></li>
+                    <li><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <button class="theme-toggle" type="button" aria-pressed="false" data-theme-toggle aria-label="Switch to light mode" title="Switch to light mode">
+                    <span class="theme-toggle__icon" aria-hidden="true">
+                        <img src="images/brightness-and-contrast.png" alt="" loading="lazy">
+                    </span>
+                </button>
+                <button class="nav-toggle" type="button" aria-controls="siteNav" aria-expanded="false">Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main">
+        <section class="page-hero vibes-hero">
+            <div class="container">
+                <p class="eyebrow">Study Vibes Station</p>
+                <h1>Set the mood, breathe, and let COSC214 feel cozy.</h1>
+                <p class="page-lead">Pick a background, queue some lofi, and run short Pomodoro bursts so practice never feels stale.</p>
+            </div>
+        </section>
+
+        <section class="page-section">
+            <div class="container vibes-layout">
+                <article class="vibes-card">
+                    <h3>Curated lofi rituals</h3>
+                    <p>Use the suggestions below as a launchpad—open your favorite YouTube lofi mix, set the wallpaper to something calming, and note how your energy feels before and after each block.</p>
+                    <ul>
+                        <li>Try alternating 25-minute focused sessions with 5-minute resets.</li>
+                        <li>Use the “Background Stations” grid to open ambient sound videos or animated loops.</li>
+                        <li>Write one intention for the next block directly on paper or in your notes app.</li>
+                    </ul>
+                </article>
+                <article class="pomodoro-card" aria-label="Pomodoro timer">
+                    <h3>Pomodoro timer</h3>
+                    <p>Use this built-in timer to keep yourself honest. Switch between focus and break modes anytime.</p>
+                    <div class="pomodoro-display" data-pomodoro-display>25:00</div>
+                    <div class="pomodoro-controls">
+                        <button class="btn btn-primary" type="button" data-pomodoro-start>Start session</button>
+                        <button class="btn btn-secondary" type="button" data-pomodoro-reset>Reset</button>
+                    </div>
+                    <div class="pomodoro-modes">
+                        <button type="button" data-pomodoro-mode="focus">Focus · 25 min</button>
+                        <button type="button" data-pomodoro-mode="break">Break · 5 min</button>
+                    </div>
+                    <p class="pomodoro-note">Tip: jot down what you accomplished after each focus round to see consistent wins.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="page-section vibes-backgrounds">
+            <div class="container">
+                <div class="section-header">
+                    <p class="eyebrow">Background Stations</p>
+                    <h2>Open a vibe that matches your current energy.</h2>
+                    <p class="section-intro">These are external links so you can pop them in another tab or monitor. Mix and match with your own favorites.</p>
+                </div>
+                <div class="background-grid">
+                    <a class="background-card" href="https://www.youtube.com/watch?v=jfKfPfyJRdk" target="_blank" rel="noopener">
+                        <span class="background-label">lofi chill beats</span>
+                        <p>“lofi hip hop radio – beats to relax/study to”</p>
+                    </a>
+                    <a class="background-card" href="https://www.youtube.com/watch?v=3jWRrafhO7M" target="_blank" rel="noopener">
+                        <span class="background-label">ambient rain</span>
+                        <p>Soothing rain ambience for gentle focus.</p>
+                    </a>
+                    <a class="background-card" href="https://www.youtube.com/watch?v=DWcJFNfaw9c" target="_blank" rel="noopener">
+                        <span class="background-label">cafe vibes</span>
+                        <p>Quiet coffee shop ambience with soft music.</p>
+                    </a>
+                    <a class="background-card" href="https://imissmycafe.com/" target="_blank" rel="noopener">
+                        <span class="background-label">mix your own</span>
+                        <p>“I Miss My Cafe” lets you blend cafe + rain + lo-fi loops.</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contact">
+        <div class="container">
+            <p class="footer-contact">Need help? Email Sarah Rashidi at <a href="mailto:serah.elrashidi@gmail.com">serah.elrashidi@gmail.com</a> with the chapter or exercise you’re working on.</p>
+            <p>The website is developed by Sarah Rashidi, © 2025.</p>
+        </div>
+    </footer>
+
+    <button class="back-to-top-fab" type="button" data-back-to-top aria-label="Back to top">
+        <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true"><path d="M12 5l7 7h-4v7h-6v-7H5l7-7z"/></svg>
+    </button>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

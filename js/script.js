@@ -59,6 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initCompilerPlayground();
     initRoadmapForm();
     initBackToTop();
+    initPomodoroTimer();
 });
 
 function initCompilerPlayground() {
@@ -271,6 +272,93 @@ function initRoadmapForm() {
         });
         renderPlan(plan);
     });
+}
+
+function initPomodoroTimer() {
+    const display = document.querySelector("[data-pomodoro-display]");
+    const startButton = document.querySelector("[data-pomodoro-start]");
+    const resetButton = document.querySelector("[data-pomodoro-reset]");
+    const modeButtons = document.querySelectorAll("[data-pomodoro-mode]");
+    if (!display || !startButton || !resetButton) return;
+
+    const durations = {
+        focus: 25 * 60,
+        break: 5 * 60
+    };
+
+    let mode = "focus";
+    let remaining = durations[mode];
+    let timerId = null;
+    let running = false;
+
+    function format(time) {
+        const minutes = Math.floor(time / 60)
+            .toString()
+            .padStart(2, "0");
+        const seconds = Math.floor(time % 60)
+            .toString()
+            .padStart(2, "0");
+        return `${minutes}:${seconds}`;
+    }
+
+    function updateDisplay() {
+        display.textContent = format(remaining);
+    }
+
+    function stopTimer() {
+        if (timerId) {
+            clearInterval(timerId);
+            timerId = null;
+        }
+        running = false;
+        startButton.textContent = "Start session";
+    }
+
+    function startTimer() {
+        if (running) {
+            stopTimer();
+            return;
+        }
+
+        running = true;
+        startButton.textContent = "Pause";
+        timerId = setInterval(() => {
+            remaining -= 1;
+            if (remaining <= 0) {
+                remaining = 0;
+                updateDisplay();
+                stopTimer();
+                display.classList.add("pomodoro-finished");
+                setTimeout(() => display.classList.remove("pomodoro-finished"), 2500);
+                return;
+            }
+            updateDisplay();
+        }, 1000);
+    }
+
+    function setMode(nextMode) {
+        mode = nextMode;
+        remaining = durations[mode];
+        stopTimer();
+        updateDisplay();
+    }
+
+    startButton.addEventListener("click", startTimer);
+    resetButton.addEventListener("click", () => {
+        remaining = durations[mode];
+        stopTimer();
+        updateDisplay();
+    });
+
+    modeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const nextMode = button.dataset.pomodoroMode;
+            if (!nextMode || !durations[nextMode]) return;
+            setMode(nextMode);
+        });
+    });
+
+    updateDisplay();
 }
 
 function initBackToTop() {
