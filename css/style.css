@@ -376,6 +376,7 @@ body[data-theme="light"] .theme-toggle__icon img {
     display: inline-flex;
     align-items: center;
     gap: 6px;
+    cursor: pointer;
 }
 
 .badge {
