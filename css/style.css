@@ -1132,6 +1132,12 @@ body[data-theme="light"] .testimonial-card {
     transition: transform var(--transition-fast);
 }
 
+body[data-theme="light"] .pomodoro-floating {
+    border: 1px solid rgba(11, 17, 33, 0.2);
+    background: rgba(255, 255, 255, 0.92);
+    color: #0c1426;
+}
+
 .pomodoro-floating[data-placement="center"] {
     left: 50%;
     top: 50%;
@@ -1180,6 +1186,16 @@ body[data-theme="light"] .testimonial-card {
     border-color: rgba(255, 255, 255, 0.35);
 }
 
+body[data-theme="light"] .timer-placement button {
+    border-color: rgba(11, 17, 33, 0.25);
+    color: #0c1426;
+}
+
+body[data-theme="light"] .timer-placement button.is-active {
+    background: rgba(11, 17, 33, 0.08);
+    border-color: rgba(11, 17, 33, 0.35);
+}
+
 .timer-collapse {
     border: 1px solid rgba(255, 255, 255, 0.2);
     background: transparent;
@@ -1188,6 +1204,11 @@ body[data-theme="light"] .testimonial-card {
     padding: 4px 12px;
     font-size: 0.8rem;
     cursor: pointer;
+}
+
+body[data-theme="light"] .timer-collapse {
+    border-color: rgba(11, 17, 33, 0.25);
+    color: #0c1426;
 }
 
 .pomodoro-body {
