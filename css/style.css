@@ -1659,6 +1659,78 @@ body[data-theme="light"] .timer-collapse {
     .roadmap-chip {
         font-size: 0.75rem;
     }
+
+    .roadmap-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .roadmap-aside {
+        order: -1;
+    }
+
+    .roadmap-submit {
+        margin-top: 6px;
+    }
+}
+
+@media (max-width: 640px) {
+    .vibe-stage__viewer {
+        padding: 24px;
+        padding-right: 24px;
+        min-height: 380px;
+    }
+
+    .pomodoro-floating {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        margin-top: 20px;
+        transform: none !important;
+    }
+
+    .pomodoro-floating[data-placement="center"] {
+        left: auto;
+        top: auto;
+        transform: none;
+    }
+
+    .pomodoro-floating.is-collapsed {
+        width: 100%;
+    }
+
+    .stage-fullscreen-btn {
+        top: 12px;
+        left: 12px;
+    }
+
+    .stage-play-link {
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .break-tip-badge {
+        bottom: 12px;
+        left: 12px;
+    }
+
+    .roadmap-hero-copy h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        width: min(96vw, 1180px);
+    }
+}
+
+@media (min-width: 1440px) {
+    .vibe-stage__viewer {
+        padding-right: 420px;
+    }
+
+    .pomodoro-floating {
+        width: 360px;
+    }
 }
 
 .contact {
