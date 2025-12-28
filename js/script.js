@@ -62,6 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
     initBackToTop();
     initPomodoroTimer();
     initExercisesGallery();
+    initExerciseDetailPage();
 });
 
 function initCompilerPlayground() {
@@ -276,19 +277,13 @@ function initRoadmapForm() {
     });
 }
 
-function initExercisesGallery() {
-    const grid = document.querySelector("[data-exercise-grid]");
-    const detail = document.querySelector("[data-exercise-detail]");
-    const filterButtons = document.querySelectorAll("[data-ex-filter]");
-    if (!grid || !detail || !filterButtons.length) return;
-
-    const exercises = [
-        {
-            id: "printing-console-pal",
-            title: "Console Welcome Mat",
-            summary: "Dial in friendly cout statements and basic formatting.",
-            tags: ["printing"],
-            content: `
+const exercisesCatalog = [
+    {
+        id: "printing-console-pal",
+        title: "Console Welcome Mat",
+        summary: "Practice friendly cout greetings and recap lines.",
+        tags: ["printing"],
+        content: `
                 <p>Prompt for a first name, favorite study beverage, and two integers. Display:</p>
                 <ul>
                     <li>A greeting that combines the name and beverage.</li>
@@ -302,14 +297,18 @@ Hey Sara, grab that latte and let's code!
 Sum: 11
 Difference: 5
 Inputs recap -> Name: Sara | Beverage: latte | Numbers: 8 & 3</pre>
-            `
-        },
-        {
-            id: "printing-pattern-lab",
-            title: "Pattern Printer Studio",
-            summary: "Use escape sequences to paint banners and scoreboards.",
-            tags: ["printing"],
-            content: `
+            `,
+        hints: [
+            "Store the inputs in variables so you can reuse them in multiple cout statements.",
+            "Use newline characters (\\n) or std::endl plus tab spacing to format the recap line."
+        ]
+    },
+    {
+        id: "printing-pattern-lab",
+        title: "Pattern Printer Studio",
+        summary: "Print banners, columns, and tables with escape codes.",
+        tags: ["printing"],
+        content: `
                 <p>Read a word and an integer width. Output three things:</p>
                 <ul>
                     <li>A centered banner using <code>std::setw</code>.</li>
@@ -325,14 +324,18 @@ VIBES
 VIBES
 Name\tTempo
 VIBES\tLo-fi</pre>
-            `
-        },
-        {
-            id: "arithmetic-kit",
-            title: "Arithmetic Control Room",
-            summary: "Chain sum, product, average, and modulus with neat formatting.",
-            tags: ["arithmetic"],
-            content: `
+            `,
+        hints: [
+            "Include <iomanip> so you can call std::setw for the banner line.",
+            "Loop width times to print the column rather than duplicating cout statements."
+        ]
+    },
+    {
+        id: "arithmetic-kit",
+        title: "Arithmetic Control Room",
+        summary: "Compute sum/product/averages with formatted output.",
+        tags: ["arithmetic"],
+        content: `
                 <p>Ask for three integers and one floating-point weight. Report:</p>
                 <ul>
                     <li>Sum, product, and integer average of the ints.</li>
@@ -344,37 +347,45 @@ Weight (0-1): 0.35
 Sum = 15 | Product = 72 | Avg = 5
 Weighted blend = 5.25
 Remainder (largest % smallest) = 1</pre>
-            `
-        },
-        {
-            id: "conditionals-suite",
-            title: "Condition Ladder Builder",
-            summary: "Practice simple if, else-if chains, and switch statements.",
-            tags: ["conditionals"],
-            content: `
-                <p>Collect a course average (0–100) and a letter command.</p>
+            `,
+        hints: [
+            "Use std::max/std::min (or manual comparisons) to capture the largest and smallest values before computing the remainder.",
+            "Call std::fixed << std::setprecision(2) once and the formatting will persist for later floating-point outputs."
+        ]
+    },
+    {
+        id: "conditionals-suite",
+        title: "Condition Ladder Builder",
+        summary: "Mix if/else-if chains, nested checks, and switch cases.",
+        tags: ["conditionals"],
+        content: `
+                <p>Collect a course average (0-100) and a letter command.</p>
                 <ul>
                     <li>Use <code>if</code>/<code>else if</code>/<code>else</code> to tag the average as Excellent, Pass, Watchlist, or Retry.</li>
                     <li>Use a <code>switch</code> on the command to trigger reminders: <code>P</code> for print plan, <code>R</code> for request regrade, <code>S</code> for schedule office hours.</li>
-                    <li>Include one nested <code>if</code> that fires when averages ≥ 95 <em>and</em> the command is <code>S</code>.</li>
+                    <li>Include one nested <code>if</code> that fires when averages >= 95 and the command is <code>S</code>.</li>
                 </ul>
                 <pre class="exercise-sample">Average: 91
 Command (P/R/S): S
 Status -> Pass ✅
 Switch note -> Schedule office hours
 Nested flag -> Honor student meetup scheduled</pre>
-            `
-        },
-        {
-            id: "loop-journal",
-            title: "Loop Journal Tracker",
-            summary: "Use for, while, and do-while to build a mini habit log.",
-            tags: ["loops"],
-            content: `
+            `,
+        hints: [
+            "Normalize the command to uppercase once so your switch handles lowercase input.",
+            "Check the highest score bands first so later conditions can assume the value is lower." 
+        ]
+    },
+    {
+        id: "loop-journal",
+        title: "Loop Journal Tracker",
+        summary: "Log sessions with for, while, and do-while loops.",
+        tags: ["loops"],
+        content: `
                 <p>Ask how many study sessions ran this week (max 7). Required:</p>
                 <ul>
                     <li>A <code>for</code> loop to collect minutes per session and accumulate totals.</li>
-                    <li>A <code>while</code> loop to count how many entries hit ≥ 25 minutes.</li>
+                    <li>A <code>while</code> loop to count how many entries hit >= 25 minutes.</li>
                     <li>A <code>do-while</code> that asks whether to log another week (Y/N) and repeats accordingly.</li>
                 </ul>
                 <pre class="exercise-sample">How many sessions (max 7)? 4
@@ -385,14 +396,18 @@ Session 4 minutes: 25
 Total minutes: 117
 Pomodoro blocks: 3
 Log another week? n</pre>
-            `
-        },
-        {
-            id: "loop-gauntlet",
-            title: "Loop Gauntlet Sprint",
-            summary: "Three loop types solve the same tally for practice.",
-            tags: ["loops"],
-            content: `
+            `,
+        hints: [
+            "Use an array or vector for the minutes so you can reuse the values when counting qualifying sessions.",
+            "A do-while loop for the retry prompt guarantees the user sees it at least once."
+        ]
+    },
+    {
+        id: "loop-gauntlet",
+        title: "Loop Gauntlet Sprint",
+        summary: "Solve the same tally using for, while, and do-while.",
+        tags: ["loops"],
+        content: `
                 <p>Read a positive integer <em>n</em>. Implement three functions:</p>
                 <ul>
                     <li><code>forSum(n)</code> – sum 1..n with a <code>for</code> loop.</li>
@@ -403,14 +418,18 @@ Log another week? n</pre>
 forSum -> 21
 whileEvenCount -> 3
 doWhileDisplay -> 6 5 4 3 2 1</pre>
-            `
-        },
-        {
-            id: "function-lab",
-            title: "Function Utility Belt",
-            summary: "Write pure functions, reuse them, and avoid global state.",
-            tags: ["functions"],
-            content: `
+            `,
+        hints: [
+            "Each helper can accept the same integer and use a different loop structure internally.",
+            "Guard against n <= 0 so the do-while version does not print negative ranges." 
+        ]
+    },
+    {
+        id: "function-lab",
+        title: "Function Utility Belt",
+        summary: "Write helper functions that return clean results.",
+        tags: ["functions"],
+        content: `
                 <p>Create and call:</p>
                 <ul>
                     <li><code>double toKelvin(double celsius)</code></li>
@@ -418,102 +437,130 @@ doWhileDisplay -> 6 5 4 3 2 1</pre>
                     <li><code>std::string initials(const std::string &name)</code></li>
                 </ul>
                 <p>Prompt for inputs, call each helper, and print the returned results without extra console logic inside the helper bodies.</p>
-            `
-        },
-        {
-            id: "salaries",
-            title: "Array of Salaries",
-            summary: "Input, report, reverse, and shift a bounded salary list.",
-            tags: ["arrays"],
-            content: `
+            `,
+        hints: [
+            "Keep the helper functions free of cout statements so they are reusable in other programs.",
+            "Split the name on spaces (or walk character by character) to find each initial." 
+        ]
+    },
+    {
+        id: "salaries",
+        title: "Array of Salaries",
+        summary: "Input salaries, report stats, reverse, and shift data.",
+        tags: ["arrays"],
+        content: `
                 <p>Work with <code>int salaries[100]</code>. Reject sizes greater than 100, then:</p>
                 <ul>
-                    <li>Print salaries with “ – ” separators.</li>
-                    <li>Compute the average and count salaries ≥ average.</li>
+                    <li>Print salaries with " - " separators.</li>
+                    <li>Compute the average and count salaries >= average.</li>
                     <li>Reverse and shift-right the array.</li>
                 </ul>
                 <pre class="exercise-sample">Enter n: 110
 Invalid Size! Try again
 Enter n: 5
 Enter 5 salaries: 4000 3200 5000 2600 1500
-Array of salaries is [4000 – 3200 – 5000 – 2600 – 1500]
+Array of salaries is [4000 - 3200 - 5000 - 2600 - 1500]
 Average of Salaries is 3260
 Count of Employees having a salary greater than or equal to 3260 is 2
-The new array after calling Reverse is [1500 – 2600 – 5000 – 3200 – 4000]
-The new array after calling Shift Right is [4000 – 1500 – 2600 – 5000 – 3200]</pre>
-            `
-        },
-        {
-            id: "array-inventory",
-            title: "Inventory Array Workshop",
-            summary: "Track stock levels, restock, and find shortages.",
-            tags: ["arrays"],
-            content: `
+The new array after calling Reverse is [1500 - 2600 - 5000 - 3200 - 4000]
+The new array after calling Shift Right is [4000 - 1500 - 2600 - 5000 - 3200]</pre>
+            `,
+        hints: [
+            "Store the number of employees so you can validate it before reading salaries.",
+            "When shifting right, save the last element before the loop overwrites it."
+        ]
+    },
+    {
+        id: "array-inventory",
+        title: "Inventory Array Workshop",
+        summary: "Track stock levels and restock low inventory entries.",
+        tags: ["arrays"],
+        content: `
                 <p>Store up to 20 item quantities in an array:</p>
                 <ul>
                     <li>List items with indices and flag anything below the reorder threshold.</li>
                     <li>Implement a function that restocks every flagged element by +5.</li>
                     <li>Report the new average quantity and the item with the highest count.</li>
                 </ul>
-            `
-        },
-        {
-            id: "random-arrays",
-            title: "Random Arrays of Positive/Negative Values",
-            summary: "Generate values in [min, max] and split into APOS/ANEG.",
-            tags: ["arrays"],
-            content: `
+            `,
+        hints: [
+            "Track the index of the max quantity during the same loop where you compute the average.",
+            "Let a helper like restockLow(arr, n, threshold, amount) modify values in place."
+        ]
+    },
+    {
+        id: "random-arrays",
+        title: "Random Arrays of Positive/Negative Values",
+        summary: "Generate numbers then split into positive/negative lists.",
+        tags: ["arrays"],
+        content: `
                 <p>Seed <code>srand(time(NULL))</code>, then build arrays APOS and ANEG with strictly positive/negative values.</p>
                 <pre class="exercise-sample">Enter n: 10
 Enter min and max: -10 10
 Array of random values between -10 and 10 is -9 3 5 10 1 4 -4 0 3 4
 Array of strictly positive values is 3 5 10 1 4 3 4
 Array of strictly negative values is -9 -4</pre>
-            `
-        },
-        {
-            id: "string-normalizer",
-            title: "String Normalizer",
-            summary: "Read a full name, trim spaces, flip case, and detect initials.",
-            tags: ["strings"],
-            content: `
+            `,
+        hints: [
+            "Keep separate counters for how many values land in APOS and ANEG so you know the valid size of each.",
+            "Remember to ignore zeros because they are neither positive nor negative in this prompt."
+        ]
+    },
+    {
+        id: "string-normalizer",
+        title: "String Normalizer",
+        summary: "Clean a name, fix casing, and extract initials.",
+        tags: ["strings"],
+        content: `
                 <p>Use <code>getline</code> to capture a student's full name, then:</p>
                 <ul>
                     <li>Strip double spaces and trailing whitespace.</li>
                     <li>Capitalize first letters and lowercase the rest.</li>
-                    <li>Extract initials (e.g., “S.R.”) and report length without spaces.</li>
+                    <li>Extract initials (e.g., "S.R.") and report length without spaces.</li>
                 </ul>
-            `
-        },
-        {
-            id: "recursion-basics",
-            title: "Recursion Warmup",
-            summary: "Implement recursive sum, digit count, and palindrome check.",
-            tags: ["strings", "functions"],
-            content: `
+            `,
+        hints: [
+            "Walk the string once to rebuild it without repeated spaces or trailing blanks.",
+            "Track whether the previous character was a space so you know when to uppercase a new letter."
+        ]
+    },
+    {
+        id: "recursion-basics",
+        title: "Recursion Warmup",
+        summary: "Write recursive helpers for digits, counts, palindromes.",
+        tags: ["strings", "functions"],
+        content: `
                 <p>Write three recursive functions:</p>
                 <ul>
                     <li><code>sumDigits(int n)</code></li>
                     <li><code>countOccurrences(string s, char ch)</code></li>
                     <li><code>isPalindrome(string s, int left, int right)</code></li>
                 </ul>
-            `
-        },
-        {
-            id: "stack-simulator",
-            title: "Stack Simulator",
-            summary: "Simulate push/pop operations with validation.",
-            tags: ["arrays"],
-            content: `
+            `,
+        hints: [
+            "Always define a base case (n == 0, left >= right, index == s.length()).",
+            "Use modulo 10 when peeling digits off an integer for sumDigits." 
+        ]
+    },
+    {
+        id: "stack-simulator",
+        title: "Stack Simulator",
+        summary: "Simulate stack pushes/pops with guard rails.",
+        tags: ["arrays"],
+        content: `
                 <p>Use a fixed-size array to simulate stack pushes/pops from a command list, printing errors when operations are invalid and reporting the top element after each command.</p>
-            `
-        },
-        {
-            id: "mixed-dashboard",
-            title: "Mixed Session Dashboard",
-            summary: "Blend IO, arithmetic, arrays, loops, and branching.",
-            tags: ["mixed"],
-            content: `
+            `,
+        hints: [
+            "Track the top index starting at -1 so you can identify underflow easily.",
+            "Check capacity before pushing and print an error when the stack is full."
+        ]
+    },
+    {
+        id: "mixed-dashboard",
+        title: "Mixed Session Dashboard",
+        summary: "Blend IO, arrays, loops, arithmetic, and branching.",
+        tags: ["mixed"],
+        content: `
                 <p>Build a mini dashboard:</p>
                 <ul>
                     <li>Read session names into an array until "done".</li>
@@ -521,41 +568,38 @@ Array of strictly negative values is -9 -4</pre>
                     <li>Use <code>if</code>/<code>else if</code> to grade the average focus time.</li>
                     <li>Print a formatted overview table using <code>std::cout</code>.</li>
                 </ul>
-            `
-        }
-    ];
+            `,
+        hints: [
+            "Break out of the input loop when the user types 'done', but do not append it to the array.",
+            "Create a helper that categorizes the average (e.g., Needs Boost, Steady, Locked In) to keep main tidy."
+        ]
+    }
+];
+
+function initExercisesGallery() {
+    const grid = document.querySelector("[data-exercise-grid]");
+    const filterButtons = document.querySelectorAll("[data-ex-filter]");
+    if (!grid || !filterButtons.length) return;
 
     let activeFilter = "all";
 
     function renderCards() {
         const fragment = document.createDocumentFragment();
-        exercises
+        exercisesCatalog
             .filter((exercise) => activeFilter === "all" || exercise.tags.includes(activeFilter))
             .forEach((exercise) => {
-                const card = document.createElement("button");
-                card.type = "button";
+                const card = document.createElement("a");
                 card.className = "exercise-card-preview";
-                card.dataset.exerciseId = exercise.id;
+                card.href = `exercise.html?id=${exercise.id}`;
                 card.innerHTML = `
                     <span class="exercise-tag">${exercise.tags.join(" · ")}</span>
                     <h4>${exercise.title}</h4>
                     <p>${exercise.summary}</p>
                 `;
-                card.addEventListener("click", () => showDetail(exercise.id));
                 fragment.appendChild(card);
             });
         grid.innerHTML = "";
         grid.appendChild(fragment);
-    }
-
-    function showDetail(exerciseId) {
-        const exercise = exercises.find((item) => item.id === exerciseId);
-        if (!exercise) return;
-        detail.innerHTML = `
-            <h3>${exercise.title}</h3>
-            ${exercise.content}
-        `;
-        detail.scrollIntoView({ behavior: "smooth", block: "start" });
     }
 
     filterButtons.forEach((button) => {
@@ -568,6 +612,62 @@ Array of strictly negative values is -9 -4</pre>
 
     renderCards();
 }
+
+function initExerciseDetailPage() {
+    const detail = document.querySelector("[data-exercise-view]");
+    if (!detail) return;
+
+    const params = new URLSearchParams(window.location.search);
+    const exerciseId = params.get("id");
+    const exercise = exercisesCatalog.find((item) => item.id === exerciseId);
+
+    if (!exercise) {
+        detail.innerHTML = `
+            <div class="exercise-detail">
+                <a class="exercise-back-link" href="exercises.html">← Back to exercises</a>
+                <p>Could not find that exercise. Choose another from the list.</p>
+            </div>
+        `;
+        return;
+    }
+
+    const hintMarkup =
+        exercise.hints && exercise.hints.length
+            ? `
+                <div class="exercise-hints">
+                    <button type="button" class="hint-toggle" data-hint-toggle aria-expanded="false">Show hints</button>
+                    <ol class="hint-list" data-hint-list hidden>
+                        ${exercise.hints
+                            .map((hint, index) => `<li><strong>Hint ${index + 1}:</strong> ${hint}</li>`)
+                            .join("")}
+                    </ol>
+                </div>
+            `
+            : "";
+
+    detail.innerHTML = `
+        <article class="exercise-detail">
+            <a class="exercise-back-link" href="exercises.html">← Back to exercises</a>
+            <p class="exercise-eyebrow">${exercise.tags.join(" / ")}</p>
+            <h1>${exercise.title}</h1>
+            <p class="exercise-summary">${exercise.summary}</p>
+            ${exercise.content}
+            ${hintMarkup}
+        </article>
+    `;
+
+    const hintToggle = detail.querySelector("[data-hint-toggle]");
+    const hintList = detail.querySelector("[data-hint-list]");
+    if (hintToggle && hintList) {
+        hintToggle.addEventListener("click", () => {
+            const expanded = hintToggle.getAttribute("aria-expanded") === "true";
+            hintToggle.setAttribute("aria-expanded", String(!expanded));
+            hintToggle.textContent = expanded ? "Show hints" : "Hide hints";
+            hintList.hidden = expanded;
+        });
+    }
+}
+
 function initVibeStage() {
     const stage = document.querySelector("[data-vibe-stage]");
     if (!stage) return;

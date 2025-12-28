@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COSC214 Companion · its-serah</title>
+    <title>COSC214 Companion · Exercise Detail</title>
     <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="icon" href="images/browsericon.png">
 </head>
 <body data-theme="dark">
-    <a class="skip-link" href="#main">Skip directly to the exercise overview.</a>
+    <a class="skip-link" href="#main">Skip directly to the selected exercise.</a>
     <header class="header">
         <div class="container header__inner">
             <a class="logo" href="index.html#home">
@@ -44,31 +44,17 @@
     </header>
 
     <main id="main">
-        <section class="page-section exercises-collection">
+        <section class="page-section exercise-detail-page">
             <div class="container">
-                <div class="exercise-header">
-                    <div>
-                        <p class="eyebrow">Exercise browser</p>
-                        <h2>Pick a prompt and filter by concept.</h2>
-                        <p class="section-intro">Tap a chip to jump into printing drills, arithmetic refreshers, conditionals, loops, standalone functions, arrays, string labs, or mixed practice—then open a card for the full brief.</p>
-                    </div>
-                    <div class="exercise-filters" role="toolbar" aria-label="Exercise filters">
-                        <button type="button" class="is-active" data-ex-filter="all">All</button>
-                        <button type="button" data-ex-filter="printing">Printing</button>
-                        <button type="button" data-ex-filter="arithmetic">Arithmetic</button>
-                        <button type="button" data-ex-filter="conditionals">Conditionals</button>
-                        <button type="button" data-ex-filter="arrays">Arrays</button>
-                        <button type="button" data-ex-filter="strings">Strings</button>
-                        <button type="button" data-ex-filter="loops">Loops</button>
-                        <button type="button" data-ex-filter="functions">Functions</button>
-                        <button type="button" data-ex-filter="mixed">Mixed</button>
+                <div class="exercise-view" data-exercise-view>
+                    <div class="exercise-detail">
+                        <p>Loading exercise...</p>
                     </div>
                 </div>
-
-                <div class="exercise-grid" data-exercise-grid aria-live="polite"></div>
             </div>
         </section>
     </main>
+
     <footer class="footer" id="contact">
         <div class="container">
             <p class="footer-contact">Need help? Email Sarah Rashidi at <a href="mailto:serah.elrashidi@gmail.com">serah.elrashidi@gmail.com</a> with the chapter or exercise you’re working on.</p>
