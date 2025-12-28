@@ -284,16 +284,16 @@ function initExercisesGallery() {
 
     const exercises = [
         {
-            id: "hello-console",
-            title: "Hello Console Toolkit",
-            summary: "Warm up with cin/cout, strings, and a dash of arithmetic.",
-            tags: ["basics"],
+            id: "printing-console-pal",
+            title: "Console Welcome Mat",
+            summary: "Dial in friendly cout statements and basic formatting.",
+            tags: ["printing"],
             content: `
                 <p>Prompt for a first name, favorite study beverage, and two integers. Display:</p>
                 <ul>
-                    <li>A cheerful greeting that combines the name and beverage.</li>
+                    <li>A greeting that combines the name and beverage.</li>
                     <li>The sum and difference of the numbers with clear labels.</li>
-                    <li>A closing line that repeats the user's inputs using <code>std::cout</code> manipulators such as <code>\\n</code> and <code>std::endl</code>.</li>
+                    <li>A closing line that repeats all inputs using <code>std::endl</code> and tab spacing.</li>
                 </ul>
                 <pre class="exercise-sample">First name: Sara
 Favorite beverage: latte
@@ -301,38 +301,81 @@ Enter two integers: 8 3
 Hey Sara, grab that latte and let's code!
 Sum: 11
 Difference: 5
-Inputs recap → Name: Sara | Beverage: latte | Numbers: 8 & 3</pre>
+Inputs recap -> Name: Sara | Beverage: latte | Numbers: 8 & 3</pre>
             `
         },
         {
-            id: "grade-helper",
-            title: "Grade Helper If/Else",
-            summary: "Use comparisons to label averages as pass, retry, or excellent.",
-            tags: ["basics"],
+            id: "printing-pattern-lab",
+            title: "Pattern Printer Studio",
+            summary: "Use escape sequences to paint banners and scoreboards.",
+            tags: ["printing"],
             content: `
-                <p>Read three quiz scores (0–100). Compute the average and report:</p>
+                <p>Read a word and an integer width. Output three things:</p>
                 <ul>
-                    <li>"Excellent!" when average ≥ 90</li>
-                    <li>"Pass ✅" when average is between 60 and 89</li>
-                    <li>"Retry 📚" otherwise</li>
+                    <li>A centered banner using <code>std::setw</code>.</li>
+                    <li>A left-aligned column of the word repeated width times.</li>
+                    <li>A mini table with headers separated by <code>\\t</code>.</li>
                 </ul>
-                <p>Echo invalid inputs (values outside 0–100) and ask for new numbers without crashing.</p>
-                <pre class="exercise-sample">Enter 3 quiz scores (0-100): 88 94 91
-Average: 91
-Excellent!</pre>
+                <pre class="exercise-sample">Word: VIBES
+Width: 4
+---- VIBES ----
+VIBES
+VIBES
+VIBES
+VIBES
+Name\tTempo
+VIBES\tLo-fi</pre>
+            `
+        },
+        {
+            id: "arithmetic-kit",
+            title: "Arithmetic Control Room",
+            summary: "Chain sum, product, average, and modulus with neat formatting.",
+            tags: ["arithmetic"],
+            content: `
+                <p>Ask for three integers and one floating-point weight. Report:</p>
+                <ul>
+                    <li>Sum, product, and integer average of the ints.</li>
+                    <li>Weighted average using the float (use <code>std::fixed</code> and <code>setprecision(2)</code>).</li>
+                    <li>The remainder when the largest value is divided by the smallest.</li>
+                </ul>
+                <pre class="exercise-sample">Enter 3 ints: 9 4 2
+Weight (0-1): 0.35
+Sum = 15 | Product = 72 | Avg = 5
+Weighted blend = 5.25
+Remainder (largest % smallest) = 1</pre>
+            `
+        },
+        {
+            id: "conditionals-suite",
+            title: "Condition Ladder Builder",
+            summary: "Practice simple if, else-if chains, and switch statements.",
+            tags: ["conditionals"],
+            content: `
+                <p>Collect a course average (0–100) and a letter command.</p>
+                <ul>
+                    <li>Use <code>if</code>/<code>else if</code>/<code>else</code> to tag the average as Excellent, Pass, Watchlist, or Retry.</li>
+                    <li>Use a <code>switch</code> on the command to trigger reminders: <code>P</code> for print plan, <code>R</code> for request regrade, <code>S</code> for schedule office hours.</li>
+                    <li>Include one nested <code>if</code> that fires when averages ≥ 95 <em>and</em> the command is <code>S</code>.</li>
+                </ul>
+                <pre class="exercise-sample">Average: 91
+Command (P/R/S): S
+Status -> Pass ✅
+Switch note -> Schedule office hours
+Nested flag -> Honor student meetup scheduled</pre>
             `
         },
         {
             id: "loop-journal",
             title: "Loop Journal Tracker",
-            summary: "Combine for- and while-loops to build a mini habit log.",
-            tags: ["basics", "loops"],
+            summary: "Use for, while, and do-while to build a mini habit log.",
+            tags: ["loops"],
             content: `
-                <p>Ask how many study sessions ran this week (max 7). Using a loop:</p>
+                <p>Ask how many study sessions ran this week (max 7). Required:</p>
                 <ul>
-                    <li>Collect the minutes for each session and accumulate a weekly total.</li>
-                    <li>Use a <code>while</code> loop to count how many entries met a 25-minute focus block.</li>
-                    <li>Print the total time plus the number of Pomodoro-complete sessions.</li>
+                    <li>A <code>for</code> loop to collect minutes per session and accumulate totals.</li>
+                    <li>A <code>while</code> loop to count how many entries hit ≥ 25 minutes.</li>
+                    <li>A <code>do-while</code> that asks whether to log another week (Y/N) and repeats accordingly.</li>
                 </ul>
                 <pre class="exercise-sample">How many sessions (max 7)? 4
 Session 1 minutes: 30
@@ -340,7 +383,41 @@ Session 2 minutes: 20
 Session 3 minutes: 42
 Session 4 minutes: 25
 Total minutes: 117
-Full Pomodoro blocks: 3</pre>
+Pomodoro blocks: 3
+Log another week? n</pre>
+            `
+        },
+        {
+            id: "loop-gauntlet",
+            title: "Loop Gauntlet Sprint",
+            summary: "Three loop types solve the same tally for practice.",
+            tags: ["loops"],
+            content: `
+                <p>Read a positive integer <em>n</em>. Implement three functions:</p>
+                <ul>
+                    <li><code>forSum(n)</code> – sum 1..n with a <code>for</code> loop.</li>
+                    <li><code>whileEvenCount(n)</code> – count even numbers using a <code>while</code>.</li>
+                    <li><code>doWhileDisplay(n)</code> – print numbers in reverse with a <code>do-while</code>.</li>
+                </ul>
+                <pre class="exercise-sample">Enter n: 6
+forSum -> 21
+whileEvenCount -> 3
+doWhileDisplay -> 6 5 4 3 2 1</pre>
+            `
+        },
+        {
+            id: "function-lab",
+            title: "Function Utility Belt",
+            summary: "Write pure functions, reuse them, and avoid global state.",
+            tags: ["functions"],
+            content: `
+                <p>Create and call:</p>
+                <ul>
+                    <li><code>double toKelvin(double celsius)</code></li>
+                    <li><code>int clampScore(int score, int min, int max)</code></li>
+                    <li><code>std::string initials(const std::string &name)</code></li>
+                </ul>
+                <p>Prompt for inputs, call each helper, and print the returned results without extra console logic inside the helper bodies.</p>
             `
         },
         {
@@ -364,6 +441,20 @@ Average of Salaries is 3260
 Count of Employees having a salary greater than or equal to 3260 is 2
 The new array after calling Reverse is [1500 – 2600 – 5000 – 3200 – 4000]
 The new array after calling Shift Right is [4000 – 1500 – 2600 – 5000 – 3200]</pre>
+            `
+        },
+        {
+            id: "array-inventory",
+            title: "Inventory Array Workshop",
+            summary: "Track stock levels, restock, and find shortages.",
+            tags: ["arrays"],
+            content: `
+                <p>Store up to 20 item quantities in an array:</p>
+                <ul>
+                    <li>List items with indices and flag anything below the reorder threshold.</li>
+                    <li>Implement a function that restocks every flagged element by +5.</li>
+                    <li>Report the new average quantity and the item with the highest count.</li>
+                </ul>
             `
         },
         {
@@ -398,7 +489,7 @@ Array of strictly negative values is -9 -4</pre>
             id: "recursion-basics",
             title: "Recursion Warmup",
             summary: "Implement recursive sum, digit count, and palindrome check.",
-            tags: ["strings"],
+            tags: ["strings", "functions"],
             content: `
                 <p>Write three recursive functions:</p>
                 <ul>
@@ -415,6 +506,21 @@ Array of strictly negative values is -9 -4</pre>
             tags: ["arrays"],
             content: `
                 <p>Use a fixed-size array to simulate stack pushes/pops from a command list, printing errors when operations are invalid and reporting the top element after each command.</p>
+            `
+        },
+        {
+            id: "mixed-dashboard",
+            title: "Mixed Session Dashboard",
+            summary: "Blend IO, arithmetic, arrays, loops, and branching.",
+            tags: ["mixed"],
+            content: `
+                <p>Build a mini dashboard:</p>
+                <ul>
+                    <li>Read session names into an array until "done".</li>
+                    <li>Track minutes per session and compute totals/averages (arithmetic + loops).</li>
+                    <li>Use <code>if</code>/<code>else if</code> to grade the average focus time.</li>
+                    <li>Print a formatted overview table using <code>std::cout</code>.</li>
+                </ul>
             `
         }
     ];
