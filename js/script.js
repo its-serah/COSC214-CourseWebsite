@@ -441,15 +441,7 @@ function initVibeStage() {
 
     const backgrounds = [
         {
-            title: "Background 01 · Dawn loft",
-            description: "Amber sunrise glow with soft synth reflections you just dropped into /images.",
-            image: "images/Background1.jpg",
-            overlay: "rgba(2, 5, 12, 0.35)",
-            link: "https://www.youtube.com/watch?v=jfKfPfyJRdk",
-            linkLabel: "Play lofi beats"
-        },
-        {
-            title: "Background 02 · Chill nebula",
+            title: "Background 01 · Chill nebula",
             description: "A moody wallpaper from your pack—use it for night sprints.",
             image: "images/Background2.jpg",
             overlay: "rgba(3, 6, 14, 0.45)",
@@ -457,7 +449,7 @@ function initVibeStage() {
             linkLabel: "Rain room"
         },
         {
-            title: "Background 03 · Midnight desk",
+            title: "Background 02 · Midnight desk",
             description: "Clean workstation energy—drop the timer in the center for full effect.",
             image: "images/Background3.jpg",
             overlay: "rgba(1, 4, 8, 0.45)",
@@ -465,7 +457,7 @@ function initVibeStage() {
             linkLabel: "Cafe ambience"
         },
         {
-            title: "Background 04 · Gradient focus",
+            title: "Background 03 · Gradient focus",
             description: "Bold gradient wallpaper made for quick resets between blocks.",
             image: "images/Background4.jpg",
             overlay: "rgba(6, 4, 12, 0.35)",
@@ -473,7 +465,7 @@ function initVibeStage() {
             linkLabel: "Ambient lofi mix"
         },
         {
-            title: "Background 05 · City glow",
+            title: "Background 04 · City glow",
             description: "City lights plus slow clouds—keep the timer docked in the corner.",
             image: "images/Background5.jpg",
             overlay: "rgba(5, 7, 16, 0.4)",
@@ -481,7 +473,7 @@ function initVibeStage() {
             linkLabel: "Play lofi beats"
         },
         {
-            title: "Background 06 · Emerald night",
+            title: "Background 05 · Emerald night",
             description: "Deep teal scenery from your upload—ideal for rainy break blocks.",
             image: "images/Background6.jpg",
             overlay: "rgba(2, 8, 8, 0.45)",
@@ -489,7 +481,7 @@ function initVibeStage() {
             linkLabel: "Rain room"
         },
         {
-            title: "Background 07 · Cozy corner",
+            title: "Background 06 · Cozy corner",
             description: "Warm studio lights with soft blur—great for centering the timer.",
             image: "images/Background7.jpg",
             overlay: "rgba(8, 6, 10, 0.4)",
@@ -497,7 +489,7 @@ function initVibeStage() {
             linkLabel: "Cafe ambience"
         },
         {
-            title: "Background 08 · Retro grid",
+            title: "Background 07 · Retro grid",
             description: "The neon-grid wallpaper you added—lean into the synthy vibe.",
             image: "images/Background8.jpg",
             overlay: "rgba(6, 5, 14, 0.4)",
@@ -505,7 +497,7 @@ function initVibeStage() {
             linkLabel: "Jazzhop mix"
         },
         {
-            title: "Background 09 · Lunar calm",
+            title: "Background 08 · Lunar calm",
             description: "Dreamy blues with soft fog—finish the session with mellow tones.",
             image: "images/Background9.jpg",
             overlay: "rgba(3, 5, 12, 0.4)",
