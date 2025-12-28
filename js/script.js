@@ -631,19 +631,15 @@ function initExerciseDetailPage() {
         return;
     }
 
-    const hintMarkup =
-        exercise.hints && exercise.hints.length
-            ? `
+    const hasHints = Boolean(exercise.hints && exercise.hints.length);
+    const hintMarkup = hasHints
+        ? `
                 <div class="exercise-hints">
                     <button type="button" class="hint-toggle" data-hint-toggle aria-expanded="false">Show hints</button>
-                    <ol class="hint-list" data-hint-list hidden>
-                        ${exercise.hints
-                            .map((hint, index) => `<li><strong>Hint ${index + 1}:</strong> ${hint}</li>`)
-                            .join("")}
-                    </ol>
+                    <ol class="hint-list" data-hint-list hidden></ol>
                 </div>
             `
-            : "";
+        : "";
 
     detail.innerHTML = `
         <article class="exercise-detail">
@@ -656,15 +652,25 @@ function initExerciseDetailPage() {
         </article>
     `;
 
-    const hintToggle = detail.querySelector("[data-hint-toggle]");
-    const hintList = detail.querySelector("[data-hint-list]");
-    if (hintToggle && hintList) {
-        hintToggle.addEventListener("click", () => {
-            const expanded = hintToggle.getAttribute("aria-expanded") === "true";
-            hintToggle.setAttribute("aria-expanded", String(!expanded));
-            hintToggle.textContent = expanded ? "Show hints" : "Hide hints";
-            hintList.hidden = expanded;
-        });
+    if (hasHints) {
+        const hintToggle = detail.querySelector("[data-hint-toggle]");
+        const hintList = detail.querySelector("[data-hint-list]");
+        let hintsLoaded = false;
+        if (hintToggle && hintList) {
+            hintToggle.addEventListener("click", () => {
+                const expanded = hintToggle.getAttribute("aria-expanded") === "true";
+                const nextState = !expanded;
+                hintToggle.setAttribute("aria-expanded", String(nextState));
+                hintToggle.textContent = nextState ? "Hide hints" : "Show hints";
+                if (nextState && !hintsLoaded) {
+                    hintList.innerHTML = exercise.hints
+                        .map((hint, index) => `<li><strong>Hint ${index + 1}:</strong> ${hint}</li>`)
+                        .join("");
+                    hintsLoaded = true;
+                }
+                hintList.hidden = !nextState;
+            });
+        }
     }
 }
 
