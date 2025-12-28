@@ -284,6 +284,66 @@ function initExercisesGallery() {
 
     const exercises = [
         {
+            id: "hello-console",
+            title: "Hello Console Toolkit",
+            summary: "Warm up with cin/cout, strings, and a dash of arithmetic.",
+            tags: ["basics"],
+            content: `
+                <p>Prompt for a first name, favorite study beverage, and two integers. Display:</p>
+                <ul>
+                    <li>A cheerful greeting that combines the name and beverage.</li>
+                    <li>The sum and difference of the numbers with clear labels.</li>
+                    <li>A closing line that repeats the user's inputs using <code>std::cout</code> manipulators such as <code>\\n</code> and <code>std::endl</code>.</li>
+                </ul>
+                <pre class="exercise-sample">First name: Sara
+Favorite beverage: latte
+Enter two integers: 8 3
+Hey Sara, grab that latte and let's code!
+Sum: 11
+Difference: 5
+Inputs recap → Name: Sara | Beverage: latte | Numbers: 8 & 3</pre>
+            `
+        },
+        {
+            id: "grade-helper",
+            title: "Grade Helper If/Else",
+            summary: "Use comparisons to label averages as pass, retry, or excellent.",
+            tags: ["basics"],
+            content: `
+                <p>Read three quiz scores (0–100). Compute the average and report:</p>
+                <ul>
+                    <li>"Excellent!" when average ≥ 90</li>
+                    <li>"Pass ✅" when average is between 60 and 89</li>
+                    <li>"Retry 📚" otherwise</li>
+                </ul>
+                <p>Echo invalid inputs (values outside 0–100) and ask for new numbers without crashing.</p>
+                <pre class="exercise-sample">Enter 3 quiz scores (0-100): 88 94 91
+Average: 91
+Excellent!</pre>
+            `
+        },
+        {
+            id: "loop-journal",
+            title: "Loop Journal Tracker",
+            summary: "Combine for- and while-loops to build a mini habit log.",
+            tags: ["basics", "loops"],
+            content: `
+                <p>Ask how many study sessions ran this week (max 7). Using a loop:</p>
+                <ul>
+                    <li>Collect the minutes for each session and accumulate a weekly total.</li>
+                    <li>Use a <code>while</code> loop to count how many entries met a 25-minute focus block.</li>
+                    <li>Print the total time plus the number of Pomodoro-complete sessions.</li>
+                </ul>
+                <pre class="exercise-sample">How many sessions (max 7)? 4
+Session 1 minutes: 30
+Session 2 minutes: 20
+Session 3 minutes: 42
+Session 4 minutes: 25
+Total minutes: 117
+Full Pomodoro blocks: 3</pre>
+            `
+        },
+        {
             id: "salaries",
             title: "Array of Salaries",
             summary: "Input, report, reverse, and shift a bounded salary list.",
@@ -331,29 +391,6 @@ Array of strictly negative values is -9 -4</pre>
                     <li>Strip double spaces and trailing whitespace.</li>
                     <li>Capitalize first letters and lowercase the rest.</li>
                     <li>Extract initials (e.g., “S.R.”) and report length without spaces.</li>
-                </ul>
-            `
-        },
-        {
-            id: "pointer-clinic",
-            title: "Pointer Clinic",
-            summary: "Practice pointer swaps, address printing, and dynamic arrays.",
-            tags: ["pointers", "arrays"],
-            content: `
-                <p>Write helper functions that swap two ints via pointers, print addresses of array elements, and dynamically allocate an array of size <em>n</em> to compute min/max.</p>
-            `
-        },
-        {
-            id: "struct-roster",
-            title: "Struct Roster & Sorting",
-            summary: "Manage a student struct array, sort, and filter.",
-            tags: ["structs", "arrays"],
-            content: `
-                <p>Create a <code>Student</code> struct with id, name, and GPA:</p>
-                <ul>
-                    <li>Read <em>n</em> students (n ≤ 50).</li>
-                    <li>Sort by GPA descending.</li>
-                    <li>Print honor-roll students (GPA ≥ 3.3).</li>
                 </ul>
             `
         },
