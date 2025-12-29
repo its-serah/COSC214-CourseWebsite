@@ -339,6 +339,20 @@ function initRoadmapForm() {
         });
         renderPlan(plan);
     });
+
+    document.addEventListener("click", (event) => {
+        const downloadButton = event.target.closest("[data-roadmap-download]");
+        if (!downloadButton || !downloadButton.dataset.roadmapText) return;
+        const blob = new Blob([downloadButton.dataset.roadmapText], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "roadmap.txt";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    });
 }
 
 const exercisesCatalog = [
