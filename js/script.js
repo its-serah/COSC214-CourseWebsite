@@ -263,6 +263,39 @@ function initRoadmapForm() {
         Data_Structures_and_Algorithms: "Data Structures & Algorithms"
     };
 
+    const defaultSelections = {
+        major: "ComputerScience"
+    };
+
+    const optionGroups = form.querySelectorAll("[data-option-group]");
+
+    optionGroups.forEach((group) => {
+        const field = group.dataset.optionGroup;
+        const hiddenInput = form.querySelector(`input[name="${field}"]`);
+        if (!hiddenInput) return;
+
+        function setActive(value) {
+            hiddenInput.value = value;
+            group.querySelectorAll("button").forEach((button) => {
+                button.classList.toggle("is-active", button.dataset.value === value);
+            });
+        }
+
+        const preset =
+            group.querySelector("button.is-active")?.dataset.value ||
+            hiddenInput.value ||
+            defaultSelections[field];
+        if (preset) {
+            setActive(preset);
+        }
+
+        group.addEventListener("click", (event) => {
+            const target = event.target.closest("button[data-value]");
+            if (!target) return;
+            setActive(target.dataset.value);
+        });
+    });
+
     function renderPlan(plan) {
         const sectionMarkup =
             plan.sections
@@ -282,42 +315,15 @@ function initRoadmapForm() {
         `;
     }
 
-    const goalLabels = {
-        review: "Reinforce fundamentals",
-        push: "Push into advanced territory",
-        interview: "Interview-style sprint"
-    };
-
-    const debuggingLabels = {
-        calm: "Debugging calm & steady",
-        uncertain: "Debugging requires a refresher",
-        stuck: "Debugging needs care"
-    };
-
-    const confidenceLabels = {
-        high: "Confidence is high",
-        medium: "Confidence is steady",
-        low: "Confidence needs a rebuild"
-    };
-
     function buildPlan(data) {
-        const { confidence, debugging, time, goal, topic, major } = data;
-        const minutes = Number(time) || 60;
-        const topicFocus = topic ? `Focus on ${topic.trim()}` : "";
+        const { major } = data;
         const majorKey = roadmapTracks[major] ? major : "ComputerScience";
         const track = roadmapTracks[majorKey];
         const sections = Object.entries(track).map(([key, items]) => ({
             title: categoryLabels[key] || key.replace(/_/g, " "),
             items
         }));
-        const summaryParts = [
-            `${minutes} minute focus block for ${majorLabels[majorKey] || majorKey}`,
-            goalLabels[goal] || "",
-            debuggingLabels[debugging] || "",
-            confidenceLabels[confidence] || "",
-            topicFocus
-        ].filter(Boolean);
-        const summary = summaryParts.length ? `${summaryParts.join(". ")}.` : "Personalized sprint ready.";
+        const summary = `Guided sprint for ${majorLabels[majorKey] || majorKey}.`;
 
         return {
             summary,
@@ -329,11 +335,6 @@ function initRoadmapForm() {
         event.preventDefault();
         const formData = new FormData(form);
         const plan = buildPlan({
-            confidence: formData.get("confidence"),
-            debugging: formData.get("debugging"),
-            time: formData.get("time"),
-            goal: formData.get("goal"),
-            topic: formData.get("topic"),
             major: formData.get("major")
         });
         renderPlan(plan);
