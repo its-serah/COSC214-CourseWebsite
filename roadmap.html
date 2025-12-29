@@ -81,6 +81,18 @@
                             </select>
                         </label>
                         <label class="roadmap-field">
+                            <span class="field-title">Your major or track</span>
+                            <span class="field-hint">Pick the closest match so the roadmap mirrors your context.</span>
+                            <select name="major" required>
+                                <option value="ComputerScience" selected>Computer Science</option>
+                                <option value="InformationTechnology">Information Technology</option>
+                                <option value="MechanicalEngineering">Mechanical Engineering</option>
+                                <option value="BiomedicalEngineering">Biomedical Engineering</option>
+                                <option value="Computer_and_Communications_Engineering">Computer & Communications Engineering</option>
+                                <option value="Mechatronics">Mechatronics</option>
+                            </select>
+                        </label>
+                        <label class="roadmap-field">
                             <span class="field-title">Time available before the next class (minutes)</span>
                             <span class="field-hint">Stick to honest windows so the plan feels doable.</span>
                             <input type="number" name="time" min="15" max="240" step="5" value="60" required>

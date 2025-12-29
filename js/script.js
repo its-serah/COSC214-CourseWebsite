@@ -201,65 +201,127 @@ function initRoadmapForm() {
     const resultPanel = document.querySelector("[data-roadmap-result]");
     if (!form || !resultPanel) return;
 
+    const roadmapTracks = {
+        ComputerScience: {
+            Git_and_GitHub: ["Version Control Basics", "Branching and Pull Requests", "Team Collaboration Workflows"],
+            LinkedIn_and_Personal_Brand: ["Profile Optimization", "Projects and Experience Showcasing", "Networking and Posting Strategy"],
+            LeetCode_and_Problem_Solving: ["Daily Practice Habit", "Beginner Problem Sets", "Interview-Style Problem Solving"],
+            CPP_Core_Next: ["Pointers and Memory", "Functions and Modular Programming", "Structs and File Handling", "Object Oriented Programming Basics"],
+            Data_Structures_and_Algorithms: ["Arrays and Strings Deep Dive", "Linked Lists", "Stacks and Queues", "Trees and Graphs Basics", "Sorting and Searching"]
+        },
+        InformationTechnology: {
+            Git_and_GitHub: ["Version Control Basics", "Team Repo Workflows", "Issue Tracking"],
+            LinkedIn_and_Personal_Brand: ["Professional Branding", "Skills and Certifications Highlighting", "Industry Networking"],
+            LeetCode_and_Problem_Solving: ["Logical Thinking Practice", "Beginner Problem Sets", "Algorithmic Mindset Development"],
+            CPP_Core_Next: ["File I_O and Data Processing", "Functions and Reusable Code", "Basic Debugging"],
+            Data_Structures_and_Algorithms: ["Arrays and Strings", "Hashing Concepts", "Queues and Stacks", "Intro Sorting and Searching"]
+        },
+        MechanicalEngineering: {
+            Git_and_GitHub: ["Project Versioning", "Team Collaboration", "Documentation in Repos"],
+            LinkedIn_and_Personal_Brand: ["Engineering Portfolio", "Projects and Prototypes Showcasing", "Industry Networking"],
+            LeetCode_and_Problem_Solving: ["Logic and Math-Based Problems", "Simulation-Relevant Problems", "Consistency Practice"],
+            CPP_Core_Next: ["Functions and Modularity", "Structs for Physical Systems", "File Handling for Data Logs"],
+            Data_Structures_and_Algorithms: ["Arrays and Vectors", "Queues and Buffers", "Simulation-Relevant Data Handling"]
+        },
+        BiomedicalEngineering: {
+            Git_and_GitHub: ["Research Code Versioning", "Dataset Tracking", "Team Repositories"],
+            LinkedIn_and_Personal_Brand: ["BioTech-Focused Branding", "Research and Experience Highlighting", "Professional Networking"],
+            LeetCode_and_Problem_Solving: ["Logic and Data-Oriented Problems", "Beginner Problem Sets", "Pattern Recognition"],
+            CPP_Core_Next: ["File I_O with Medical Data", "Functions and Modular Code", "Structs for Patient Data Models"],
+            Data_Structures_and_Algorithms: ["Arrays and Tables", "Queues for Monitoring Systems", "Searching and Sorting Records"]
+        },
+        Computer_and_Communications_Engineering: {
+            Git_and_GitHub: ["Collaborative Firmware Repos", "Release and Version Tagging", "Team Workflows"],
+            LinkedIn_and_Personal_Brand: ["Telecom and Embedded Branding", "Project Demos and Contributions", "Professional Networking"],
+            LeetCode_and_Problem_Solving: ["Bitwise and Logic Problems", "Networking-Inspired Problems", "Daily Practice"],
+            CPP_Core_Next: ["Pointers and Memory Concepts", "Bitwise Operations", "Low-Level File I_O"],
+            Data_Structures_and_Algorithms: ["Arrays and Bit Manipulation", "Queues and Buffers", "Graphs Basics for Networks"]
+        },
+        Mechatronics: {
+            Git_and_GitHub: ["Hardware-Software Project Tracking", "Team Collaboration", "Version Control for Control Systems"],
+            LinkedIn_and_Personal_Brand: ["Robotics-Focused Branding", "Project-Based Portfolio", "Industry Networking"],
+            LeetCode_and_Problem_Solving: ["Logic and Control-Oriented Problems", "Beginner Problem Sets", "Consistent Practice Habit"],
+            CPP_Core_Next: ["Functions for Control Logic", "Structs for Sensor Data", "File I_O for Logs"],
+            Data_Structures_and_Algorithms: ["Arrays and Sensor Streams", "Queues for Real-Time Systems", "Searching and Sorting Basics"]
+        }
+    };
+
+    const majorLabels = {
+        ComputerScience: "Computer Science",
+        InformationTechnology: "Information Technology",
+        MechanicalEngineering: "Mechanical Engineering",
+        BiomedicalEngineering: "Biomedical Engineering",
+        Computer_and_Communications_Engineering: "Computer & Communications Engineering",
+        Mechatronics: "Mechatronics"
+    };
+
+    const categoryLabels = {
+        Git_and_GitHub: "Git & GitHub",
+        LinkedIn_and_Personal_Brand: "LinkedIn & Personal Brand",
+        LeetCode_and_Problem_Solving: "LeetCode & Problem Solving",
+        CPP_Core_Next: "C++ Core · Next Steps",
+        Data_Structures_and_Algorithms: "Data Structures & Algorithms"
+    };
+
     function renderPlan(plan) {
+        const sectionMarkup =
+            plan.sections
+                .map(
+                    (section) => `
+            <div>
+                <strong>${section.title}</strong>
+                <ul>${section.items.map((item) => `<li>${item}</li>`).join("")}</ul>
+            </div>
+        `
+                )
+                .join("") || "<p>Keep reflecting to build your roadmap.</p>";
+
         resultPanel.innerHTML = `
             <h3>Next sprint: ${plan.summary}</h3>
-            <div>
-                <strong>Chapters to review</strong>
-                <ul>${plan.chapters.map((item) => `<li>${item}</li>`).join("")}</ul>
-            </div>
-            <div>
-                <strong>Exercises to run</strong>
-                <ul>${plan.exercises.map((item) => `<li>${item}</li>`).join("")}</ul>
-            </div>
-            <div>
-                <strong>Problem sets to attempt</strong>
-                <ul>${plan.problems.map((item) => `<li>${item}</li>`).join("")}</ul>
-            </div>
+            ${sectionMarkup}
         `;
     }
 
+    const goalLabels = {
+        review: "Reinforce fundamentals",
+        push: "Push into advanced territory",
+        interview: "Interview-style sprint"
+    };
+
+    const debuggingLabels = {
+        calm: "Debugging calm & steady",
+        uncertain: "Debugging requires a refresher",
+        stuck: "Debugging needs care"
+    };
+
+    const confidenceLabels = {
+        high: "Confidence is high",
+        medium: "Confidence is steady",
+        low: "Confidence needs a rebuild"
+    };
+
     function buildPlan(data) {
-        const { confidence, debugging, time, goal, topic } = data;
-        const chapters = [];
-        const exercises = [];
-        const problems = [];
-
-        if (confidence === "low") {
-            chapters.push("Chapter 01 · Rewatch foundations lecture deck");
-            chapters.push("Chapter 02 · Focus on conditionals & loops walkthrough");
-        } else if (confidence === "medium") {
-            chapters.push("Chapter 03 · Arrays & strings walkthrough");
-        } else {
-            chapters.push("Chapter 04 · Object-oriented recap");
-        }
-
-        if (debugging === "stuck") {
-            exercises.push("Re-run compiler playground: input validation drills");
-            exercises.push("Repeat guided hints for nested loops lab");
-        } else if (debugging === "uncertain") {
-            exercises.push("Complete the Chapter 03 string parsing lab");
-        } else {
-            exercises.push("Tackle the memory management sandbox");
-        }
-
-        if (goal === "interview") {
-            problems.push("Problem Set C · Object-oriented design scenario");
-            problems.push("Problem Set B · Iterative data processing challenge");
-        } else if (goal === "push") {
-            problems.push("Problem Set B · Data aggregation drills");
-        } else {
-            problems.push("Problem Set A · Branching confidence boosters");
-        }
-
+        const { confidence, debugging, time, goal, topic, major } = data;
         const minutes = Number(time) || 60;
-        const focusText = topic ? `Focus on ${topic.trim()}. ` : "";
+        const topicFocus = topic ? `Focus on ${topic.trim()}` : "";
+        const majorKey = roadmapTracks[major] ? major : "ComputerScience";
+        const track = roadmapTracks[majorKey];
+        const sections = Object.entries(track).map(([key, items]) => ({
+            title: categoryLabels[key] || key.replace(/_/g, " "),
+            items
+        }));
+        const summaryParts = [
+            `${minutes} minute focus block for ${majorLabels[majorKey] || majorKey}`,
+            goalLabels[goal] || "",
+            debuggingLabels[debugging] || "",
+            confidenceLabels[confidence] || "",
+            topicFocus
+        ].filter(Boolean);
+        const summary = summaryParts.length ? `${summaryParts.join(". ")}.` : "Personalized sprint ready.";
 
         return {
-            summary: `${minutes} minute focus block. ${focusText}`.trim(),
-            chapters,
-            exercises,
-            problems
+            summary,
+            sections
         };
     }
 
@@ -271,7 +333,8 @@ function initRoadmapForm() {
             debugging: formData.get("debugging"),
             time: formData.get("time"),
             goal: formData.get("goal"),
-            topic: formData.get("topic")
+            topic: formData.get("topic"),
+            major: formData.get("major")
         });
         renderPlan(plan);
     });
